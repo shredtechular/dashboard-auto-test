@@ -1,0 +1,2181 @@
+{
+  "name": "Shredder App3 Standard Dashboard",
+  "description": "",
+  "permissions": "PUBLIC_READ_WRITE",
+  "pages": [
+    {
+      "name": "Application Monitoring",
+      "description": null,
+      "widgets": [
+        {
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "height": 4,
+            "width": 2
+          },
+          "title": "",
+          "rawConfiguration": {
+            "text": "# Response Time Analysis\n\n![Add Images](http://www.trekglobal.com/wp-content/uploads/icon-financial.png)"
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.line"
+          },
+          "layout": {
+            "column": 3,
+            "row": 1,
+            "height": 2,
+            "width": 4
+          },
+          "title": "Average Response Time (ms)",
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(duration * 1000) AS 'Average Response Time' FROM Transaction WHERE appName = 'hcgov-app3-prod' TIMESERIES SINCE 60 minutes ago EXTRAPOLATE"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "layout": {
+            "column": 7,
+            "row": 1,
+            "height": 2,
+            "width": 2
+          },
+          "title": "Average Response Time (ms)",
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(duration * 1000) AS 'Average Response Time (ms)' FROM Transaction WHERE appName like '%prod%'  SINCE 60 minutes ago EXTRAPOLATE"
+              }
+            ],
+            "thresholds": []
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.table"
+          },
+          "layout": {
+            "column": 9,
+            "row": 1,
+            "height": 2,
+            "width": 4
+          },
+          "title": "Transaction Response Time per Instance",
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(duration * 1000) as 'response time(ms)', count(*) from Transaction facet host where appName='hcgov-app3-prod'"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.area"
+          },
+          "layout": {
+            "column": 3,
+            "row": 3,
+            "height": 2,
+            "width": 6
+          },
+          "title": "AVG Application Response Time (ms)",
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(apm.service.overview.web) * 1000 FROM Metric WHERE (appName = 'hcgov-app3-prod') FACET `segmentName` SINCE 1 hour AGO TIMESERIES "
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.line"
+          },
+          "layout": {
+            "column": 9,
+            "row": 3,
+            "height": 2,
+            "width": 4
+          },
+          "title": "Throughput",
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT rate(count(apm.service.transaction.duration), 1 minute) as 'Web throughput (rpm)' FROM Metric WHERE (appName = 'hcgov-app3-prod') AND (transactionType = 'Web') SINCE 1 hour AGO TIMESERIES "
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.area"
+          },
+          "layout": {
+            "column": 1,
+            "row": 5,
+            "height": 3,
+            "width": 8
+          },
+          "title": "AVG Database Response Time (ms)",
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(databaseDuration)*1000 from Transaction TIMESERIES Where appName='hcgov-app3-prod'\n"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.heatmap"
+          },
+          "layout": {
+            "column": 9,
+            "row": 5,
+            "height": 3,
+            "width": 4
+          },
+          "title": "Database Performance",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT histogram(databaseDuration*300) from Transaction FACET name SINCE 60 minutes ago where appName = 'hcgov-app3-prod'"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.area"
+          },
+          "layout": {
+            "column": 1,
+            "row": 8,
+            "height": 3,
+            "width": 6
+          },
+          "title": "External Services Response Time (ms)",
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "\nSELECT average(newrelic.timeslice.value) * 1000  FROM Metric WHERE metricTimesliceName like 'External%' AND appName = 'hcgov-app3-prod' SINCE 60 MINUTES AGO TIMESERIES facet metricTimesliceName"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.line"
+          },
+          "layout": {
+            "column": 7,
+            "row": 8,
+            "height": 3,
+            "width": 6
+          },
+          "title": "External Services Calls Per Minute (cpm)",
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT count(apm.service.transaction.external.duration) as 'External Services CPM' FROM Metric WHERE appName = 'hcgov-app3-prod' TIMESERIES SINCE 60 minutes ago"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.table"
+          },
+          "layout": {
+            "column": 1,
+            "row": 11,
+            "height": 3,
+            "width": 6
+          },
+          "title": "Top Slowest Transactions",
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(duration) from Transaction FACET name where appName = 'hcgov-app3-prod'"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.table"
+          },
+          "layout": {
+            "column": 7,
+            "row": 11,
+            "height": 3,
+            "width": 6
+          },
+          "title": "Slowest Database Transactions",
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(databaseDuration) from Transaction FACET name where appName = 'hcgov-app3-prod'"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "layout": {
+            "column": 1,
+            "row": 14,
+            "height": 3,
+            "width": 2
+          },
+          "title": "",
+          "rawConfiguration": {
+            "text": "# Errors Analysis\n\n![Add Images](https://cdn3.iconfinder.com/data/icons/basicolor-signs-warnings/24/182_warning_notice_error-128.png)"
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.line"
+          },
+          "layout": {
+            "column": 3,
+            "row": 14,
+            "height": 3,
+            "width": 10
+          },
+          "title": "Error Percentage",
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT percentage(count(*), WHERE error is true) AS 'Error rate' FROM Transaction TIMESERIES SINCE 1800 seconds ago EXTRAPOLATE where appName = 'hcgov-app3-prod'"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.pie"
+          },
+          "layout": {
+            "column": 1,
+            "row": 17,
+            "height": 5,
+            "width": 6
+          },
+          "title": "Top Transaction Errors",
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT count(*) FROM TransactionError FACET transactionName where appName = 'hcgov-app3-prod'"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "layout": {
+            "column": 7,
+            "row": 17,
+            "height": 5,
+            "width": 6
+          },
+          "title": "Errors by Server",
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT count(*) FROM TransactionError FACET host where appName = 'hcgov-app3-prod'"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.table"
+          },
+          "layout": {
+            "column": 1,
+            "row": 22,
+            "height": 5,
+            "width": 12
+          },
+          "title": "Error Details",
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT httpResponseCode, httpResponseMessage, error.class, error.message, transactionName, appName, host FROM TransactionError where appName = 'hcgov-app3-prod'"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "layout": {
+            "column": 1,
+            "row": 27,
+            "height": 1,
+            "width": 12
+          },
+          "title": "",
+          "rawConfiguration": {
+            "text": "# No unsaved dashboard changes detected"
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "layout": {
+            "column": 1,
+            "row": 28,
+            "height": 1,
+            "width": 12
+          },
+          "title": "",
+          "rawConfiguration": {
+            "text": "# ![Add Images](https://cdn3.iconfinder.com/data/icons/basicolor-signs-warnings/24/182_warning_notice_error-20.png) ! Unsaved changes detected in your dashboard.\n[Check your changes in](https://onenr.io/0WBQ1xdNljx)"
+          },
+          "linkedEntityGuids": null
+        }
+      ]
+    },
+    {
+      "name": "Infrastructure Monitoring",
+      "description": null,
+      "widgets": [
+        {
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "height": 3,
+            "width": 2
+          },
+          "title": "",
+          "rawConfiguration": {
+            "text": "# CPU Data\n\n![Add Images](https://cdn1.iconfinder.com/data/icons/computer-hardware-8/128/CPU-128.png)"
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "layout": {
+            "column": 3,
+            "row": 1,
+            "height": 3,
+            "width": 3
+          },
+          "title": "Average CPU Percentage",
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(cpuUserPercent) from SystemSample facet hostname limit MAX where apmApplicationNames like '%hcgov-app3-prod%'"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.line"
+          },
+          "layout": {
+            "column": 6,
+            "row": 1,
+            "height": 3,
+            "width": 7
+          },
+          "title": "Average CPU Usage",
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(cpuUserPercent) from SystemSample facet hostname limit MAX TIMESERIES  where apmApplicationNames like '%hcgov-app3-prod%'"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.line"
+          },
+          "layout": {
+            "column": 1,
+            "row": 4,
+            "height": 3,
+            "width": 12
+          },
+          "title": "CPU Usage Breakdown",
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(cpuSystemPercent) AS `Avg CPU System %`, average(cpuIOWaitPercent) AS `Avg CPU I/O Wait %`, average(cpuUserPercent) AS `Avg CPU User %`, average(cptStealPercent) AS `Avg CPU Steal %` FROM SystemSample TIMESERIES where apmApplicationNames like '%hcgov-app3-prod%'"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.table"
+          },
+          "layout": {
+            "column": 1,
+            "row": 7,
+            "height": 3,
+            "width": 12
+          },
+          "title": "Server Process Breakdown",
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT count(*), average(threadCount), average(cpuPercent), average(cpuSystemPercent) FROM ProcessSample FACET commandName limit MAX where apmApplicationNames like '%hcgov-app3-prod%'"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "layout": {
+            "column": 1,
+            "row": 10,
+            "height": 3,
+            "width": 2
+          },
+          "title": "",
+          "rawConfiguration": {
+            "text": "# Memory Data\n\n![Add Images](https://cdn4.iconfinder.com/data/icons/electronics-device-1/128/Flashdrive-128.png)"
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "layout": {
+            "column": 3,
+            "row": 10,
+            "height": 3,
+            "width": 2
+          },
+          "title": "Memory Usage",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(memoryUsedBytes) /1000000 AS 'Avg MB Used', average(memoryFreeBytes)/1000000 AS 'Avg MB Free' FROM SystemSample where apmApplicationNames like '%hcgov-app3-prod%'"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.line"
+          },
+          "layout": {
+            "column": 5,
+            "row": 10,
+            "height": 3,
+            "width": 8
+          },
+          "title": "Average Memory Consumption",
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(memoryUsedPercent) AS `GB` FROM SystemSample FACET hostname LIMIT MAX TIMESERIES where apmApplicationNames like '%hcgov-app3-prod%'"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "layout": {
+            "column": 1,
+            "row": 13,
+            "height": 3,
+            "width": 2
+          },
+          "title": "",
+          "rawConfiguration": {
+            "text": "# Disk Data\n\n![Add Images](https://cdn3.iconfinder.com/data/icons/user-interface-2-6/85/floppy_disk_save-128.png)"
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "layout": {
+            "column": 3,
+            "row": 13,
+            "height": 3,
+            "width": 2
+          },
+          "title": "Disk Utilization",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT max(diskUsedPercent) as 'Percent Full' FROM StorageSample where apmApplicationNames like '%hcgov-app3-prod%'"
+              }
+            ],
+            "thresholds": [
+              {
+                "alertSeverity": "CRITICAL",
+                "value": 95
+              },
+              {
+                "alertSeverity": "WARNING",
+                "value": 85
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.line"
+          },
+          "layout": {
+            "column": 5,
+            "row": 13,
+            "height": 3,
+            "width": 4
+          },
+          "title": "Server Network BW Usage",
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(receiveBytesPerSecond) as 'Inbound BW', average(transmitBytesPerSecond) as 'Outbound BW' FROM NetworkSample TIMESERIES where apmApplicationNames like '%hcgov-app3-prod%'"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.line"
+          },
+          "layout": {
+            "column": 9,
+            "row": 13,
+            "height": 3,
+            "width": 4
+          },
+          "title": "Disk I/Os",
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(readBytesPerSecond) as 'Reads', average(writeBytesPerSecond) as 'Writes' FROM StorageSample TIMESERIES AUTO where apmApplicationNames like '%hcgov-app3-prod%'"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          },
+          "linkedEntityGuids": null
+        }
+      ]
+    },
+    {
+      "name": "Frontend Monitoring",
+      "description": null,
+      "widgets": [
+        {
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "height": 3,
+            "width": 2
+          },
+          "title": "",
+          "rawConfiguration": {
+            "text": "# Frontend Data\n\n![Add Images](https://cdn3.iconfinder.com/data/icons/windows-9/154/classic-window-128.png)"
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "layout": {
+            "column": 3,
+            "row": 1,
+            "height": 3,
+            "width": 2
+          },
+          "title": "Stats Breakdown",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(duration) as `Avg Page Load`, percentile(duration,50) as `Median`, percentile(duration,95) as `Percentile` FROM PageView WHERE appName = 'hcgov-app3-prod'"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.line"
+          },
+          "layout": {
+            "column": 5,
+            "row": 1,
+            "height": 3,
+            "width": 6
+          },
+          "title": "Page Views Over Time",
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT count(*) FROM PageView TIMESERIES AUTO WHERE appName = 'hcgov-app3-prod'"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "layout": {
+            "column": 11,
+            "row": 1,
+            "height": 3,
+            "width": 2
+          },
+          "title": "Active Sessions",
+          "rawConfiguration": {
+            "dataFormatters": [
+              {
+                "name": "session",
+                "type": "decimal"
+              }
+            ],
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT uniqueCount(session) FROM PageView WHERE appName = 'hcgov-app3-prod'"
+              }
+            ],
+            "thresholds": []
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.line"
+          },
+          "layout": {
+            "column": 1,
+            "row": 4,
+            "height": 3,
+            "width": 12
+          },
+          "title": "Average Load Time",
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(duration) From PageView TIMESERIES AUTO WHERE appName = 'hcgov-app3-prod'"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.pie"
+          },
+          "layout": {
+            "column": 1,
+            "row": 7,
+            "height": 3,
+            "width": 4
+          },
+          "title": "Traffic By Device Type",
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT count(*) FROM PageView FACET deviceType WHERE appName = 'hcgov-app3-prod'"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.pie"
+          },
+          "layout": {
+            "column": 5,
+            "row": 7,
+            "height": 3,
+            "width": 4
+          },
+          "title": "Traffic By Origin",
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT count(*) FROM PageView FACET regionCode WHERE appName = 'hcgov-app3-prod'"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.pie"
+          },
+          "layout": {
+            "column": 9,
+            "row": 7,
+            "height": 3,
+            "width": 4
+          },
+          "title": "Browser Breakdown",
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT count(*) FROM PageView FACET userAgentName WHERE appName = 'hcgov-app3-prod'"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.line"
+          },
+          "layout": {
+            "column": 1,
+            "row": 10,
+            "height": 3,
+            "width": 4
+          },
+          "title": "Load Time By Device Type",
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(duration) from PageView facet deviceType TIMESERIES WHERE appName = 'hcgov-app3-prod'"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.line"
+          },
+          "layout": {
+            "column": 5,
+            "row": 10,
+            "height": 3,
+            "width": 4
+          },
+          "title": "Load Time By Origin",
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(duration) from PageView facet regionCode TIMESERIES WHERE appName = 'hcgov-app3-prod'"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.area"
+          },
+          "layout": {
+            "column": 9,
+            "row": 10,
+            "height": 3,
+            "width": 4
+          },
+          "title": "Load Time By Browser",
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(duration) from PageView facet userAgentName TIMESERIES WHERE appName = 'hcgov-app3-prod'"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.table"
+          },
+          "layout": {
+            "column": 1,
+            "row": 13,
+            "height": 3,
+            "width": 8
+          },
+          "title": "Performance By Page",
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT count(*) as `# Pages`,average(duration) as `AVG`,percentile(duration,50,75) as `%`,average(duration - backendDuration) as `Front`,average(backendDuration) as `Back`,average(connectionSetupDuration) as `Connection`,average(domProcessingDuration) as `DOM Processing`,average(pageRenderingDuration) as `Page Rendering` FROM PageView facet browserTransactionName WHERE appName = 'hcgov-app3-prod'"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.area"
+          },
+          "layout": {
+            "column": 9,
+            "row": 13,
+            "height": 3,
+            "width": 4
+          },
+          "title": "Response Time By Page",
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(duration) from PageView facet browserTransactionName TIMESERIES WHERE appName = 'hcgov-app3-prod'"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.table"
+          },
+          "layout": {
+            "column": 1,
+            "row": 16,
+            "height": 3,
+            "width": 8
+          },
+          "title": "Browser Version Breakdown",
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT count(*) as `# Pages`,average(duration) as `AVG`,percentile(duration,50,75) as `%`,average(duration - backendDuration) as `Front`,average(backendDuration) as `Back`,average(connectionSetupDuration) as `Connection`,average(domProcessingDuration) as `DOM Processing`,average(pageRenderingDuration) as `age Rendering` FROM PageView facet userAgentName, userAgentVersion WHERE appName = 'hcgov-app3-prod'"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.area"
+          },
+          "layout": {
+            "column": 9,
+            "row": 16,
+            "height": 3,
+            "width": 4
+          },
+          "title": "Response Time By Browser Version",
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(duration) from PageView facet userAgentName,userAgentVersion TIMESERIES WHERE appName = 'hcgov-app3-prod'"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.line"
+          },
+          "layout": {
+            "column": 1,
+            "row": 19,
+            "height": 2,
+            "width": 12
+          },
+          "title": "Daily Running JS Error Count",
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT count(*) FROM  JavaScriptError WHERE appName = 'hcgov-app3-prod' SINCE 60 minutes ago TIMESERIES AUTO"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.table"
+          },
+          "layout": {
+            "column": 1,
+            "row": 21,
+            "height": 3,
+            "width": 4
+          },
+          "title": "Error by Request Uri",
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT count(*) FROM  JavaScriptError FACET requestUri SINCE 1 day ago LIMIT 50 WHERE  appName = 'hcgov-app3-prod'"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.table"
+          },
+          "layout": {
+            "column": 5,
+            "row": 21,
+            "height": 3,
+            "width": 4
+          },
+          "title": "Top 50 JS Error",
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT count(*) FROM  JavaScriptError FACET errorClass SINCE 1 day ago LIMIT 50 where appName = 'hcgov-app3-prod'"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.table"
+          },
+          "layout": {
+            "column": 9,
+            "row": 21,
+            "height": 3,
+            "width": 4
+          },
+          "title": "Related JS Error Messages",
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT count(*) FROM  JavaScriptError FACET errorMessage SINCE 1 day ago LIMIT 50 where appName = 'hcgov-app3-prod'"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "layout": {
+            "column": 1,
+            "row": 24,
+            "height": 3,
+            "width": 4
+          },
+          "title": "JS Errors by Device Type",
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT count(*) FROM  JavaScriptError FACET deviceType SINCE 1 day ago LIMIT 50 where appName = 'hcgov-app3-prod'"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.pie"
+          },
+          "layout": {
+            "column": 5,
+            "row": 24,
+            "height": 3,
+            "width": 4
+          },
+          "title": "JS Errors by Browser",
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT count(*) FROM  JavaScriptError FACET userAgentName SINCE 1 day ago LIMIT 50 where appName = 'hcgov-app3-prod'"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.pie"
+          },
+          "layout": {
+            "column": 9,
+            "row": 24,
+            "height": 3,
+            "width": 4
+          },
+          "title": "Related Browser Versions",
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT count(*) FROM  JavaScriptError FACET userAgentVersion SINCE 1 day ago LIMIT 50 where appName = 'hcgov-app3-prod'"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        }
+      ]
+    },
+    {
+      "name": "Uptime & Availability",
+      "description": null,
+      "widgets": [
+        {
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "height": 3,
+            "width": 2
+          },
+          "title": "",
+          "rawConfiguration": {
+            "text": "# Uptime & Availability\n![Uptime](http://www.b4restore.com/Files/Billeder/b4/availabilityt-icon-grey.png)"
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "layout": {
+            "column": 3,
+            "row": 1,
+            "height": 3,
+            "width": 3
+          },
+          "title": "Daily Uptime",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT percentage(count(result), where result = 'SUCCESS') from SyntheticCheck since 1 Day ago"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "layout": {
+            "column": 6,
+            "row": 1,
+            "height": 3,
+            "width": 3
+          },
+          "title": "Weekly Uptime",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT percentage(count(result), where result = 'SUCCESS') from SyntheticCheck since 1 week ago"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "layout": {
+            "column": 9,
+            "row": 1,
+            "height": 3,
+            "width": 3
+          },
+          "title": "Monthly Uptime",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT percentage(count(result), where result = 'SUCCESS') from SyntheticCheck since 1 month ago"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "layout": {
+            "column": 1,
+            "row": 4,
+            "height": 3,
+            "width": 4
+          },
+          "title": "Average Load Times by Monitor",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(duration)/1000 from SyntheticCheck facet monitorName since 1 week ago"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.line"
+          },
+          "layout": {
+            "column": 5,
+            "row": 4,
+            "height": 3,
+            "width": 8
+          },
+          "title": "Average Load Time by Monitor",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(duration)/1000 from SyntheticCheck facet monitorName since 1 day ago timeseries"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.table"
+          },
+          "layout": {
+            "column": 1,
+            "row": 7,
+            "height": 3,
+            "width": 4
+          },
+          "title": "Failure Rate by Monitor",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT 100-percentage(count(result), where result = 'SUCCESS') as 'Failure Rate' from SyntheticCheck  FACET monitorName since 1 Day ago"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.area"
+          },
+          "layout": {
+            "column": 5,
+            "row": 7,
+            "height": 3,
+            "width": 4
+          },
+          "title": "Failures by Monitor over Time",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT count(*) FROM SyntheticCheck WHERE result != 'SUCCESS' FACET  monitorName SINCE 1 day ago TIMESERIES"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.area"
+          },
+          "layout": {
+            "column": 9,
+            "row": 7,
+            "height": 3,
+            "width": 4
+          },
+          "title": "Failures by Location",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT count(*) FROM SyntheticCheck WHERE result != 'SUCCESS' FACET locationLabel SINCE 1 day ago TIMESERIES"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "layout": {
+            "column": 1,
+            "row": 10,
+            "height": 3,
+            "width": 4
+          },
+          "title": "Average Execution By Location",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(duration) from SyntheticCheck facet locationLabel since 1 week ago"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.line"
+          },
+          "layout": {
+            "column": 5,
+            "row": 10,
+            "height": 3,
+            "width": 8
+          },
+          "title": "Execution times",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(duration) from SyntheticCheck facet locationLabel since 1 day ago timeseries"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "layout": {
+            "column": 1,
+            "row": 13,
+            "height": 3,
+            "width": 4
+          },
+          "title": "Slowest Assets By Type",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(duration) from SyntheticRequest facet contentCategory since 1 week ago"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.line"
+          },
+          "layout": {
+            "column": 5,
+            "row": 13,
+            "height": 3,
+            "width": 8
+          },
+          "title": "Load Times by Asset Type Over Time",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(duration) from SyntheticRequest facet contentCategory  since 1 day ago TIMESERIES"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "layout": {
+            "column": 1,
+            "row": 16,
+            "height": 3,
+            "width": 4
+          },
+          "title": "Slowest Assets",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(duration) from SyntheticRequest facet hierarchicalURL since 1 week ago"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.line"
+          },
+          "layout": {
+            "column": 5,
+            "row": 16,
+            "height": 3,
+            "width": 8
+          },
+          "title": "5 Slowest Assets Over Time",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT average(duration) from SyntheticRequest facet URL limit 5 since 1 day ago TIMESERIES"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.table"
+          },
+          "layout": {
+            "column": 1,
+            "row": 19,
+            "height": 4,
+            "width": 12
+          },
+          "title": "Assets",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT * from SyntheticRequest since 3 days ago"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        }
+      ]
+    },
+    {
+      "name": "Database Monitoring",
+      "description": null,
+      "widgets": [
+        {
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "height": 6,
+            "width": 12
+          },
+          "title": "",
+          "rawConfiguration": {
+            "text": "# Database Monitoring\n\nThe queries for database monitoring will vary depending on the type of database and instrumentation available.  In general, the following KPIs can be used for most databases however, so please create charts for the below metrics:\n\n* Current Connections\n* Index counts & sizes\n* Database storage utilization\n* Query times & counts\n* Number of queries & query times\n* Buffer pool sizes (if applicable)\n* Number of deadlocks (if applicable)\n* Total Objects & Open Opjects (if applicable)\n\n**NOTE - Please reach out to anewhouse@newrelic.com if you need assistance.**"
+          },
+          "linkedEntityGuids": null
+        }
+      ]
+    },
+    {
+      "name": "SLAs",
+      "description": null,
+      "widgets": [
+        {
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "height": 6,
+            "width": 2
+          },
+          "title": "",
+          "rawConfiguration": {
+            "text": "# Availability\n![Uptime](http://exergy-orc.com/upload/pages/253/exergy-geothermal-availability-icon.png)\n### Website Availability\nAll components of the website must be up 99.99% of the time. \n### API Availability\nAll backend components of the website must be up and available 99.99% of the time. "
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "layout": {
+            "column": 3,
+            "row": 1,
+            "height": 1,
+            "width": 10
+          },
+          "title": "",
+          "rawConfiguration": {
+            "text": "## Website Availability\n\n"
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "layout": {
+            "column": 3,
+            "row": 2,
+            "height": 2,
+            "width": 3
+          },
+          "title": "Daily Uptime",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT percentage(count(result), where result = 'SUCCESS') from SyntheticCheck since 1 Day ago"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "layout": {
+            "column": 6,
+            "row": 2,
+            "height": 2,
+            "width": 3
+          },
+          "title": "Weekly Uptime",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT percentage(count(result), where result = 'SUCCESS') from SyntheticCheck since 1 week ago"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "layout": {
+            "column": 9,
+            "row": 2,
+            "height": 2,
+            "width": 3
+          },
+          "title": "Monthly Uptime",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT percentage(count(result), where result = 'SUCCESS') from SyntheticCheck since 1 month ago"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "layout": {
+            "column": 3,
+            "row": 4,
+            "height": 1,
+            "width": 10
+          },
+          "title": "",
+          "rawConfiguration": {
+            "text": "## API Availability"
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "layout": {
+            "column": 3,
+            "row": 5,
+            "height": 2,
+            "width": 3
+          },
+          "title": "Daily Uptime",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT percentage(count(result), where result = 'SUCCESS') from SyntheticCheck since 1 Day ago"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "layout": {
+            "column": 6,
+            "row": 5,
+            "height": 2,
+            "width": 3
+          },
+          "title": "Weekly Uptime",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT percentage(count(result), where result = 'SUCCESS') from SyntheticCheck since 1 week ago"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "layout": {
+            "column": 9,
+            "row": 5,
+            "height": 2,
+            "width": 3
+          },
+          "title": "Monthly Uptime",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT percentage(count(result), where result = 'SUCCESS') from SyntheticCheck since 1 month ago"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "layout": {
+            "column": 1,
+            "row": 7,
+            "height": 8,
+            "width": 2
+          },
+          "title": "",
+          "rawConfiguration": {
+            "text": "# Performance\n\n![Add Images](https://cdn4.iconfinder.com/data/icons/cooking/100/1-128.png)\n\n### Website Performance\nAll webpages shall load in under: \n- 3 seconds measured at the 99th percentile\n- 2 seconds measured at the 95th percentile\n- 1 second measured at the 50th percentile\n\n### API Performance\nAll APIs and backend components shall complete in under: \n- Less or equal to 700ms for 99th percent of the requests\n- Less or equal to 500ms for 95th percent of the requests\n- Less or equal to 300ms for 50th percent of the requests\n"
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "layout": {
+            "column": 3,
+            "row": 7,
+            "height": 1,
+            "width": 10
+          },
+          "title": "",
+          "rawConfiguration": {
+            "text": "## Website Performance"
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "layout": {
+            "column": 3,
+            "row": 8,
+            "height": 3,
+            "width": 4
+          },
+          "title": "Past 24 hours Performance",
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT percentile(duration, 99) AS '99th Percentile Page Load Time (s)', percentile(duration, 95) AS '95th Percentile Page Load Time (s)', percentile(duration, 50) AS '50th Percentile Page Load Time (s)' FROM BrowserInteraction WHERE appName = 'hcgov-app3-prod' SINCE 1 day ago EXTRAPOLATE"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.line"
+          },
+          "layout": {
+            "column": 7,
+            "row": 8,
+            "height": 3,
+            "width": 6
+          },
+          "title": "Front End Performance",
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT percentile(duration, 99) AS '99th Percentile Page Load Time', percentile(duration, 95) AS '95th Percentile Page Load Time', percentile(duration, 50) AS '50th Percentile Page Load Time' FROM BrowserInteraction WHERE appName = 'hcgov-app3-prod' TIMESERIES 10 minutes SINCE 6 hours ago EXTRAPOLATE"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "layout": {
+            "column": 3,
+            "row": 11,
+            "height": 1,
+            "width": 10
+          },
+          "title": "",
+          "rawConfiguration": {
+            "text": "## API Performance"
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "layout": {
+            "column": 3,
+            "row": 12,
+            "height": 3,
+            "width": 4
+          },
+          "title": "API Performance (24 hours)",
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT percentile(duration * 1000, 99) AS '99th Percentile Response time (ms)', percentile(duration * 1000, 95) AS '95th Percentile Response time (ms)', percentile(duration * 1000, 50) AS '50th Percentile Response time (ms)' FROM Transaction WHERE appName = 'hcgov-app3-prod' SINCE 1 day ago EXTRAPOLATE"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.line"
+          },
+          "layout": {
+            "column": 7,
+            "row": 12,
+            "height": 3,
+            "width": 6
+          },
+          "title": "API Performance",
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT percentile(duration * 1000, 99) AS '99th Percentile Response time', percentile(duration * 1000, 95) AS '95th Percentile Response time', percentile(duration * 1000, 50) AS '50th Percentile Response time' FROM Transaction WHERE appName = 'hcgov-app3-prod' TIMESERIES SINCE 6 hours ago EXTRAPOLATE"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "layout": {
+            "column": 1,
+            "row": 15,
+            "height": 11,
+            "width": 2
+          },
+          "title": "",
+          "rawConfiguration": {
+            "text": "# Load\n\n![Add Images](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Performance%2C_Web_Fundamentals.svg/120px-Performance%2C_Web_Fundamentals.svg.png)\n\n### Website Load\nThe website should support 35000 concurrent users/hour while meeting all other SLAs\n\n### API Load\nAll APIs should work successfully serving up to 2000 requests per second.\n"
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "layout": {
+            "column": 3,
+            "row": 15,
+            "height": 1,
+            "width": 10
+          },
+          "title": "",
+          "rawConfiguration": {
+            "text": "## Website Load"
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "12a60ed2-afe5-4808-9730-8a6ea2a51121.nr1-chartbeat-viz"
+          },
+          "layout": {
+            "column": 3,
+            "row": 16,
+            "height": 3,
+            "width": 3
+          },
+          "title": "Chartbeat Concurrent Users (App 3.0)",
+          "rawConfiguration": {
+            "chartbeatAPIkey": "d84b48dd9e4d68a39a02a54e0e01b05a",
+            "pollingMs": "10",
+            "sectionId": "app 3.0"
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "layout": {
+            "column": 6,
+            "row": 16,
+            "height": 3,
+            "width": 3
+          },
+          "title": "Unique Sessions (Past 24 hours)",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT uniqueCount(session) FROM BrowserInteraction WHERE appName = 'hcgov-app3-prod' since 1 day ago EXTRAPOLATE "
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "layout": {
+            "column": 9,
+            "row": 16,
+            "height": 3,
+            "width": 3
+          },
+          "title": "Number of PageViews",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT count(*) FROM BrowserInteraction WHERE appName ='hcgov-app3-prod'  SINCE 1 hour ago EXTRAPOLATE"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.line"
+          },
+          "layout": {
+            "column": 3,
+            "row": 19,
+            "height": 3,
+            "width": 5
+          },
+          "title": "Unique Sessions",
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT uniqueCount(session) as 'Unique Sessions' FROM BrowserInteraction WHERE appName ='hcgov-app3-prod' TIMESERIES since 3 days ago EXTRAPOLATE "
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.line"
+          },
+          "layout": {
+            "column": 8,
+            "row": 19,
+            "height": 3,
+            "width": 5
+          },
+          "title": "Page Views per second",
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT rate(count(*), 1 minute) / 60 as 'page views per second' FROM BrowserInteraction WHERE appName ='hcgov-app3-prod' TIMESERIES SINCE 1 hour ago EXTRAPOLATE"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "layout": {
+            "column": 3,
+            "row": 22,
+            "height": 1,
+            "width": 10
+          },
+          "title": "",
+          "rawConfiguration": {
+            "text": "## API Load"
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "layout": {
+            "column": 3,
+            "row": 23,
+            "height": 3,
+            "width": 3
+          },
+          "title": "Total API Requests (24 hours)",
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT count(*) FROM Transaction WHERE appName ='hcgov-app3-prod' SINCE 24 hours ago EXTRAPOLATE"
+              }
+            ]
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.line"
+          },
+          "layout": {
+            "column": 6,
+            "row": 23,
+            "height": 3,
+            "width": 7
+          },
+          "title": "API Requests Per Second",
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 402306,
+                "query": "SELECT rate(count(*), 1 minute) / 60 AS 'Requests per second' FROM Transaction WHERE appName ='hcgov-app3-prod' TIMESERIES SINCE 3 hours ago EXTRAPOLATE"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          },
+          "linkedEntityGuids": null
+        }
+      ]
+    }
+  ]
+}
