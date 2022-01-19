@@ -19,9 +19,9 @@
           },
           "title": "GitHub Version Control for Dashboards",
           "rawConfiguration": {
-            "ghBaseURL": null,
+            "ghBaseURL": "",
             "ghOwner": "shredtechular",
-            "ghPath": "browser-overview.json",
+            "ghPath": "browser-overview2.json",
             "ghRepo": "dashboard-auto-test",
             "ghToken": "Z2hwXzJ4ZEZsOGppS2h0U3JaVDV0RXBrdUcxeDFPQnh0YzFvdE1Xbw==",
             "nrDashId": "MzM2MTk2NnxWSVp8REFTSEJPQVJEfGRhOjc0NDExMg",
