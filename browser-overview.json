@@ -25,7 +25,7 @@
             "ghRepo": "dashboard-auto-test",
             "ghToken": "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",
             "nrDashId": "MzM2MTk2NnxWSVp8REFTSEJPQVJEfGRhOjc0NDExMg",
-            "pollingMs": "5000"
+            "pollingMs": ""
           },
           "linkedEntityGuids": null
         },
