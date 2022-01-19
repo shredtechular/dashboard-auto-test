@@ -62,12 +62,17 @@
           },
           "title": "Stats Breakout",
           "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
             "nrqlQueries": [
               {
                 "accountId": 3361966,
                 "query": "SELECT average(duration) as 'Avg Page Load', percentile(duration,50) as 'Median', percentile(duration,95) as 'Percentile', uniqueCount(session) as 'Visitors' FROM PageView SINCE 1 week ago"
               }
-            ]
+            ],
+            "thresholds": []
           },
           "linkedEntityGuids": null
         },
