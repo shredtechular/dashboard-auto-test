@@ -9,11 +9,33 @@
       "widgets": [
         {
           "visualization": {
-            "id": "viz.bar"
+            "id": "94516760-3ef2-43be-8d1e-de8bdc8cf579.nr1-dashboard-gh-version-control"
           },
           "layout": {
             "column": 1,
             "row": 1,
+            "height": 1,
+            "width": 12
+          },
+          "title": "GitHub Version Control for Dashboards",
+          "rawConfiguration": {
+            "ghBaseURL": null,
+            "ghOwner": "shredtechular",
+            "ghPath": "browser-overview.json",
+            "ghRepo": "dashboard-auto-test",
+            "ghToken": "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",
+            "nrDashId": "MzM2MTk2NnxWSVp8REFTSEJPQVJEfGRhOjc0NDExMg",
+            "pollingMs": "5000"
+          },
+          "linkedEntityGuids": null
+        },
+        {
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "layout": {
+            "column": 1,
+            "row": 2,
             "height": 4,
             "width": 5
           },
@@ -34,7 +56,7 @@
           },
           "layout": {
             "column": 6,
-            "row": 1,
+            "row": 2,
             "height": 4,
             "width": 2
           },
@@ -55,7 +77,7 @@
           },
           "layout": {
             "column": 8,
-            "row": 1,
+            "row": 2,
             "height": 4,
             "width": 5
           },
@@ -76,7 +98,7 @@
           },
           "layout": {
             "column": 1,
-            "row": 5,
+            "row": 6,
             "height": 3,
             "width": 9
           },
@@ -97,7 +119,7 @@
           },
           "layout": {
             "column": 10,
-            "row": 5,
+            "row": 6,
             "height": 3,
             "width": 3
           },
@@ -118,7 +140,7 @@
           },
           "layout": {
             "column": 1,
-            "row": 8,
+            "row": 9,
             "height": 3,
             "width": 7
           },
@@ -139,7 +161,7 @@
           },
           "layout": {
             "column": 8,
-            "row": 8,
+            "row": 9,
             "height": 3,
             "width": 5
           },
@@ -160,7 +182,7 @@
           },
           "layout": {
             "column": 1,
-            "row": 11,
+            "row": 12,
             "height": 3,
             "width": 6
           },
@@ -181,7 +203,7 @@
           },
           "layout": {
             "column": 7,
-            "row": 11,
+            "row": 12,
             "height": 3,
             "width": 6
           },
@@ -202,7 +224,7 @@
           },
           "layout": {
             "column": 1,
-            "row": 14,
+            "row": 15,
             "height": 3,
             "width": 4
           },
@@ -223,7 +245,7 @@
           },
           "layout": {
             "column": 5,
-            "row": 14,
+            "row": 15,
             "height": 3,
             "width": 4
           },
@@ -244,7 +266,7 @@
           },
           "layout": {
             "column": 9,
-            "row": 14,
+            "row": 15,
             "height": 3,
             "width": 4
           },
@@ -265,7 +287,7 @@
           },
           "layout": {
             "column": 1,
-            "row": 17,
+            "row": 18,
             "height": 3,
             "width": 4
           },
@@ -286,7 +308,7 @@
           },
           "layout": {
             "column": 5,
-            "row": 17,
+            "row": 18,
             "height": 3,
             "width": 4
           },
@@ -307,7 +329,7 @@
           },
           "layout": {
             "column": 9,
-            "row": 17,
+            "row": 18,
             "height": 3,
             "width": 4
           },
@@ -328,7 +350,7 @@
           },
           "layout": {
             "column": 1,
-            "row": 20,
+            "row": 21,
             "height": 4,
             "width": 12
           },
@@ -349,7 +371,7 @@
           },
           "layout": {
             "column": 1,
-            "row": 24,
+            "row": 25,
             "height": 5,
             "width": 8
           },
@@ -370,7 +392,7 @@
           },
           "layout": {
             "column": 9,
-            "row": 24,
+            "row": 25,
             "height": 5,
             "width": 4
           },
@@ -391,7 +413,7 @@
           },
           "layout": {
             "column": 1,
-            "row": 29,
+            "row": 30,
             "height": 4,
             "width": 8
           },
@@ -412,7 +434,7 @@
           },
           "layout": {
             "column": 9,
-            "row": 29,
+            "row": 30,
             "height": 4,
             "width": 4
           },
@@ -433,7 +455,7 @@
           },
           "layout": {
             "column": 1,
-            "row": 33,
+            "row": 34,
             "height": 5,
             "width": 9
           },
@@ -454,7 +476,7 @@
           },
           "layout": {
             "column": 10,
-            "row": 33,
+            "row": 34,
             "height": 5,
             "width": 3
           },
@@ -475,7 +497,7 @@
           },
           "layout": {
             "column": 1,
-            "row": 38,
+            "row": 39,
             "height": 6,
             "width": 12
           },
@@ -496,7 +518,7 @@
           },
           "layout": {
             "column": 1,
-            "row": 44,
+            "row": 45,
             "height": 3,
             "width": 4
           },
@@ -517,7 +539,7 @@
           },
           "layout": {
             "column": 5,
-            "row": 44,
+            "row": 45,
             "height": 3,
             "width": 8
           },
