@@ -33,16 +33,18 @@
             "width": 5
           },
           "rawConfiguration": {
+            "dataFormatters": [],
             "nrqlQueries": [
               {
                 "accountId": 3361966,
                 "query": "SELECT count(*) FROM PageView FACET browserTransactionName SINCE 1 week ago LIMIT 25"
               }
-            ]
+            ],
+            "thresholds": []
           },
           "title": "Traffic by Page Group",
           "visualization": {
-            "id": "viz.bar"
+            "id": "viz.billboard"
           }
         },
         {
@@ -62,11 +64,12 @@
                 "accountId": 3361966,
                 "query": "SELECT average(duration) as 'Avg Page Load', percentile(duration,50) as 'Median', percentile(duration,95) as 'Percentile', uniqueCount(session) as 'Visitors' FROM PageView SINCE 1 week ago"
               }
-            ]
+            ],
+            "thresholds": []
           },
           "title": "Stats Breakout",
           "visualization": {
-            "id": "viz.bar"
+            "id": "viz.billboard"
           }
         },
         {
