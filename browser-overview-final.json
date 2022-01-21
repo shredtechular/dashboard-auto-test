@@ -1,45 +1,37 @@
 {
   "name": "Browser Overview3",
-  "description": null,
-  "permissions": "PUBLIC_READ_WRITE",
   "pages": [
     {
       "name": "Browser Overview",
-      "description": null,
       "widgets": [
         {
-          "visualization": {
-            "id": "64f5a379-c720-456e-a6bb-cf3885a7ba77.nr1-dashboard-gh-version-control"
-          },
           "layout": {
             "column": 1,
-            "row": 1,
             "height": 1,
+            "row": 1,
             "width": 12
           },
-          "title": "GitHub Version Control for Dashboards",
           "rawConfiguration": {
             "ghBaseURL": "",
             "ghOwner": "shredtechular",
-            "ghPath": "browser-overview3.json",
+            "ghPath": "browser-overview-final.json",
             "ghRepo": "dashboard-auto-test",
             "ghToken": "Z2hwXzJ4ZEZsOGppS2h0U3JaVDV0RXBrdUcxeDFPQnh0YzFvdE1Xbw==",
             "nrDashId": "MzM2MTk2NnxWSVp8REFTSEJPQVJEfGRhOjc1NjM4NA",
             "pollingMs": "3000"
           },
-          "linkedEntityGuids": null
+          "title": "GitHub Version Control for Dashboards",
+          "visualization": {
+            "id": "64f5a379-c720-456e-a6bb-cf3885a7ba77.nr1-dashboard-gh-version-control"
+          }
         },
         {
-          "visualization": {
-            "id": "viz.bar"
-          },
           "layout": {
             "column": 1,
-            "row": 2,
             "height": 4,
+            "row": 2,
             "width": 5
           },
-          "title": "Traffic by Page Group",
           "rawConfiguration": {
             "nrqlQueries": [
               {
@@ -48,19 +40,18 @@
               }
             ]
           },
-          "linkedEntityGuids": null
-        },
-        {
+          "title": "Traffic by Page Group",
           "visualization": {
             "id": "viz.bar"
-          },
+          }
+        },
+        {
           "layout": {
             "column": 6,
-            "row": 2,
             "height": 4,
+            "row": 2,
             "width": 2
           },
-          "title": "Stats Breakout",
           "rawConfiguration": {
             "dataFormatters": [],
             "facet": {
@@ -73,19 +64,18 @@
               }
             ]
           },
-          "linkedEntityGuids": null
+          "title": "Stats Breakout",
+          "visualization": {
+            "id": "viz.bar"
+          }
         },
         {
-          "visualization": {
-            "id": "viz.heatmap"
-          },
           "layout": {
             "column": 8,
-            "row": 2,
             "height": 4,
+            "row": 2,
             "width": 5
           },
-          "title": "Load Time Distribution",
           "rawConfiguration": {
             "nrqlQueries": [
               {
@@ -94,19 +84,18 @@
               }
             ]
           },
-          "linkedEntityGuids": null
+          "title": "Load Time Distribution",
+          "visualization": {
+            "id": "viz.heatmap"
+          }
         },
         {
-          "visualization": {
-            "id": "viz.line"
-          },
           "layout": {
             "column": 1,
-            "row": 6,
             "height": 3,
+            "row": 6,
             "width": 9
           },
-          "title": "Traffic Volume over Time",
           "rawConfiguration": {
             "nrqlQueries": [
               {
@@ -115,19 +104,18 @@
               }
             ]
           },
-          "linkedEntityGuids": null
+          "title": "Traffic Volume over Time",
+          "visualization": {
+            "id": "viz.line"
+          }
         },
         {
-          "visualization": {
-            "id": "viz.billboard"
-          },
           "layout": {
             "column": 10,
-            "row": 6,
             "height": 3,
+            "row": 6,
             "width": 3
           },
-          "title": "Active Sessions",
           "rawConfiguration": {
             "nrqlQueries": [
               {
@@ -136,19 +124,18 @@
               }
             ]
           },
-          "linkedEntityGuids": null
+          "title": "Active Sessions",
+          "visualization": {
+            "id": "viz.billboard"
+          }
         },
         {
-          "visualization": {
-            "id": "viz.line"
-          },
           "layout": {
             "column": 1,
-            "row": 9,
             "height": 3,
+            "row": 9,
             "width": 7
           },
-          "title": "Site-wide Statistics",
           "rawConfiguration": {
             "nrqlQueries": [
               {
@@ -157,19 +144,18 @@
               }
             ]
           },
-          "linkedEntityGuids": null
-        },
-        {
+          "title": "Site-wide Statistics",
           "visualization": {
             "id": "viz.line"
-          },
+          }
+        },
+        {
           "layout": {
             "column": 8,
-            "row": 9,
             "height": 3,
+            "row": 9,
             "width": 5
           },
-          "title": "Median Load Time",
           "rawConfiguration": {
             "nrqlQueries": [
               {
@@ -178,19 +164,18 @@
               }
             ]
           },
-          "linkedEntityGuids": null
-        },
-        {
+          "title": "Median Load Time",
           "visualization": {
             "id": "viz.line"
-          },
+          }
+        },
+        {
           "layout": {
             "column": 1,
-            "row": 12,
             "height": 3,
+            "row": 12,
             "width": 6
           },
-          "title": "Homepage Synthetic Check",
           "rawConfiguration": {
             "nrqlQueries": [
               {
@@ -199,19 +184,18 @@
               }
             ]
           },
-          "linkedEntityGuids": null
+          "title": "Homepage Synthetic Check",
+          "visualization": {
+            "id": "viz.line"
+          }
         },
         {
-          "visualization": {
-            "id": "viz.table"
-          },
           "layout": {
             "column": 7,
-            "row": 12,
             "height": 3,
+            "row": 12,
             "width": 6
           },
-          "title": "Synthetic Success Rates",
           "rawConfiguration": {
             "nrqlQueries": [
               {
@@ -220,19 +204,18 @@
               }
             ]
           },
-          "linkedEntityGuids": null
+          "title": "Synthetic Success Rates",
+          "visualization": {
+            "id": "viz.table"
+          }
         },
         {
-          "visualization": {
-            "id": "viz.pie"
-          },
           "layout": {
             "column": 1,
-            "row": 15,
             "height": 3,
+            "row": 15,
             "width": 4
           },
-          "title": "Traffic by Device Type",
           "rawConfiguration": {
             "nrqlQueries": [
               {
@@ -241,19 +224,18 @@
               }
             ]
           },
-          "linkedEntityGuids": null
-        },
-        {
+          "title": "Traffic by Device Type",
           "visualization": {
             "id": "viz.pie"
-          },
+          }
+        },
+        {
           "layout": {
             "column": 5,
-            "row": 15,
             "height": 3,
+            "row": 15,
             "width": 4
           },
-          "title": "Traffic by Origin",
           "rawConfiguration": {
             "nrqlQueries": [
               {
@@ -262,19 +244,18 @@
               }
             ]
           },
-          "linkedEntityGuids": null
-        },
-        {
+          "title": "Traffic by Origin",
           "visualization": {
             "id": "viz.pie"
-          },
+          }
+        },
+        {
           "layout": {
             "column": 9,
-            "row": 15,
             "height": 3,
+            "row": 15,
             "width": 4
           },
-          "title": "Browser Breakdown",
           "rawConfiguration": {
             "nrqlQueries": [
               {
@@ -283,19 +264,18 @@
               }
             ]
           },
-          "linkedEntityGuids": null
+          "title": "Browser Breakdown",
+          "visualization": {
+            "id": "viz.pie"
+          }
         },
         {
-          "visualization": {
-            "id": "viz.line"
-          },
           "layout": {
             "column": 1,
-            "row": 18,
             "height": 3,
+            "row": 18,
             "width": 4
           },
-          "title": "Load Time by Device Type",
           "rawConfiguration": {
             "nrqlQueries": [
               {
@@ -304,19 +284,18 @@
               }
             ]
           },
-          "linkedEntityGuids": null
-        },
-        {
+          "title": "Load Time by Device Type",
           "visualization": {
             "id": "viz.line"
-          },
+          }
+        },
+        {
           "layout": {
             "column": 5,
-            "row": 18,
             "height": 3,
+            "row": 18,
             "width": 4
           },
-          "title": "Load Time by Country",
           "rawConfiguration": {
             "nrqlQueries": [
               {
@@ -325,19 +304,18 @@
               }
             ]
           },
-          "linkedEntityGuids": null
+          "title": "Load Time by Country",
+          "visualization": {
+            "id": "viz.line"
+          }
         },
         {
-          "visualization": {
-            "id": "viz.area"
-          },
           "layout": {
             "column": 9,
-            "row": 18,
             "height": 3,
+            "row": 18,
             "width": 4
           },
-          "title": "Load Time by Browser",
           "rawConfiguration": {
             "nrqlQueries": [
               {
@@ -346,19 +324,18 @@
               }
             ]
           },
-          "linkedEntityGuids": null
-        },
-        {
+          "title": "Load Time by Browser",
           "visualization": {
             "id": "viz.area"
-          },
+          }
+        },
+        {
           "layout": {
             "column": 1,
-            "row": 21,
             "height": 4,
+            "row": 21,
             "width": 12
           },
-          "title": "Response Time by Browser Transaction",
           "rawConfiguration": {
             "nrqlQueries": [
               {
@@ -367,19 +344,18 @@
               }
             ]
           },
-          "linkedEntityGuids": null
+          "title": "Response Time by Browser Transaction",
+          "visualization": {
+            "id": "viz.area"
+          }
         },
         {
-          "visualization": {
-            "id": "viz.table"
-          },
           "layout": {
             "column": 1,
-            "row": 25,
             "height": 5,
+            "row": 25,
             "width": 8
           },
-          "title": "Performance by Page Group",
           "rawConfiguration": {
             "nrqlQueries": [
               {
@@ -388,19 +364,18 @@
               }
             ]
           },
-          "linkedEntityGuids": null
+          "title": "Performance by Page Group",
+          "visualization": {
+            "id": "viz.table"
+          }
         },
         {
-          "visualization": {
-            "id": "viz.pie"
-          },
           "layout": {
             "column": 9,
-            "row": 25,
             "height": 5,
+            "row": 25,
             "width": 4
           },
-          "title": "Most Active Cities",
           "rawConfiguration": {
             "nrqlQueries": [
               {
@@ -409,19 +384,18 @@
               }
             ]
           },
-          "linkedEntityGuids": null
+          "title": "Most Active Cities",
+          "visualization": {
+            "id": "viz.pie"
+          }
         },
         {
-          "visualization": {
-            "id": "viz.table"
-          },
           "layout": {
             "column": 1,
-            "row": 30,
             "height": 4,
+            "row": 30,
             "width": 8
           },
-          "title": "Browser Version Breakdown",
           "rawConfiguration": {
             "nrqlQueries": [
               {
@@ -430,19 +404,18 @@
               }
             ]
           },
-          "linkedEntityGuids": null
+          "title": "Browser Version Breakdown",
+          "visualization": {
+            "id": "viz.table"
+          }
         },
         {
-          "visualization": {
-            "id": "viz.area"
-          },
           "layout": {
             "column": 9,
-            "row": 30,
             "height": 4,
+            "row": 30,
             "width": 4
           },
-          "title": "Response Time by Browser Version",
           "rawConfiguration": {
             "nrqlQueries": [
               {
@@ -451,19 +424,18 @@
               }
             ]
           },
-          "linkedEntityGuids": null
+          "title": "Response Time by Browser Version",
+          "visualization": {
+            "id": "viz.area"
+          }
         },
         {
-          "visualization": {
-            "id": "viz.table"
-          },
           "layout": {
             "column": 1,
-            "row": 34,
             "height": 5,
+            "row": 34,
             "width": 9
           },
-          "title": "Performance by Specific Page URL",
           "rawConfiguration": {
             "nrqlQueries": [
               {
@@ -472,19 +444,18 @@
               }
             ]
           },
-          "linkedEntityGuids": null
-        },
-        {
+          "title": "Performance by Specific Page URL",
           "visualization": {
             "id": "viz.table"
-          },
+          }
+        },
+        {
           "layout": {
             "column": 10,
-            "row": 34,
             "height": 5,
+            "row": 34,
             "width": 3
           },
-          "title": "Session Focus",
           "rawConfiguration": {
             "nrqlQueries": [
               {
@@ -493,19 +464,18 @@
               }
             ]
           },
-          "linkedEntityGuids": null
-        },
-        {
+          "title": "Session Focus",
           "visualization": {
             "id": "viz.table"
-          },
+          }
+        },
+        {
           "layout": {
             "column": 1,
-            "row": 39,
             "height": 6,
+            "row": 39,
             "width": 12
           },
-          "title": "Page View Timeline",
           "rawConfiguration": {
             "nrqlQueries": [
               {
@@ -514,19 +484,18 @@
               }
             ]
           },
-          "linkedEntityGuids": null
+          "title": "Page View Timeline",
+          "visualization": {
+            "id": "viz.table"
+          }
         },
         {
-          "visualization": {
-            "id": "viz.pie"
-          },
           "layout": {
             "column": 1,
-            "row": 45,
             "height": 3,
+            "row": 45,
             "width": 4
           },
-          "title": "Top ISPs",
           "rawConfiguration": {
             "nrqlQueries": [
               {
@@ -535,19 +504,18 @@
               }
             ]
           },
-          "linkedEntityGuids": null
+          "title": "Top ISPs",
+          "visualization": {
+            "id": "viz.pie"
+          }
         },
         {
-          "visualization": {
-            "id": "viz.line"
-          },
           "layout": {
             "column": 5,
-            "row": 45,
             "height": 3,
+            "row": 45,
             "width": 8
           },
-          "title": "Backend response time",
           "rawConfiguration": {
             "nrqlQueries": [
               {
@@ -556,9 +524,13 @@
               }
             ]
           },
-          "linkedEntityGuids": null
+          "title": "Backend response time",
+          "visualization": {
+            "id": "viz.line"
+          }
         }
       ]
     }
-  ]
+  ],
+  "permissions": "PUBLIC_READ_WRITE"
 }
