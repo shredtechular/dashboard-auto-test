@@ -14,7 +14,7 @@
           "rawConfiguration": {
             "ghBaseURL": "",
             "ghOwner": "shredtechular",
-            "ghPath": "browser-overview3.json",
+            "ghPath": "browser-overview-final.json",
             "ghRepo": "dashboard-auto-test",
             "ghToken": "Z2hwXzJ4ZEZsOGppS2h0U3JaVDV0RXBrdUcxeDFPQnh0YzFvdE1Xbw==",
             "nrDashId": "MzM2MTk2NnxWSVp8REFTSEJPQVJEfGRhOjc1NjM4NA",
@@ -97,12 +97,18 @@
             "width": 9
           },
           "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
             "nrqlQueries": [
               {
                 "accountId": 3361966,
-                "query": "SELECT count(*) FROM PageView TIMESERIES 1 hour SINCE 1 week ago COMPARE WITH 1 week ago"
+                "query": "SELECT count(*) FROM PageView TIMESERIES 1 hour SINCE 2 weeks ago COMPARE WITH 2 weeks ago"
               }
-            ]
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
           },
           "title": "Traffic Volume over Time",
           "visualization": {
