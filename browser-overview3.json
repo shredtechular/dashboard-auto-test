@@ -1,5 +1,5 @@
 {
-  "name": "Browser Overview2",
+  "name": "Browser Overview3",
   "pages": [
     {
       "name": "Browser Overview",
@@ -14,10 +14,10 @@
           "rawConfiguration": {
             "ghBaseURL": "",
             "ghOwner": "shredtechular",
-            "ghPath": "browser-overview2.json",
+            "ghPath": "browser-overview3.json",
             "ghRepo": "dashboard-auto-test",
             "ghToken": "Z2hwXzJ4ZEZsOGppS2h0U3JaVDV0RXBrdUcxeDFPQnh0YzFvdE1Xbw==",
-            "nrDashId": "MzM2MTk2NnxWSVp8REFTSEJPQVJEfGRhOjc1NTM3NA",
+            "nrDashId": "MzM2MTk2NnxWSVp8REFTSEJPQVJEfGRhOjc1NjM4NA",
             "pollingMs": "3000"
           },
           "title": "GitHub Version Control for Dashboards",
