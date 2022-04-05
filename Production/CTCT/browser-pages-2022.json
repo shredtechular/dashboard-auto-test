@@ -9,7 +9,7 @@
             "column": 1,
             "height": 1,
             "row": 1,
-            "width": 12
+            "width": 4
           },
           "rawConfiguration": {
             "ghBaseURL": null,
@@ -23,6 +23,55 @@
           "title": "GitHub Version Control for Dashboards",
           "visualization": {
             "id": "64f5a379-c720-456e-a6bb-cf3885a7ba77.nr1-dashboard-gh-version-control"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 1,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(duration) FROM PageView  since 1 day ago  FACET appName TIMESERIES"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          },
+          "title": "Recent Average Response Time",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 1,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(duration) as ' End User Time', average(backendDuration) as ' App Server Time ' FROM PageView SINCE 1 day ago  TIMESERIES"
+              }
+            ]
+          },
+          "title": "Recent End User & App Server Performance",
+          "visualization": {
+            "id": "viz.line"
           }
         },
         {
@@ -49,40 +98,40 @@
           "layout": {
             "column": 5,
             "height": 3,
-            "row": 2,
+            "row": 4,
             "width": 4
           },
           "rawConfiguration": {
             "nrqlQueries": [
               {
                 "accountId": 3361966,
-                "query": "SELECT average(duration) FROM PageView  since 1 day ago  FACET appName TIMESERIES"
+                "query": "SELECT count(*) FROM PageView FACET hourof(timestamp) SINCE 24 hours ago"
               }
             ]
           },
-          "title": "Recent Average Response Time",
+          "title": "Daily Page Views By Hour",
           "visualization": {
-            "id": "viz.area"
+            "id": "viz.pie"
           }
         },
         {
           "layout": {
             "column": 9,
             "height": 3,
-            "row": 2,
+            "row": 4,
             "width": 4
           },
           "rawConfiguration": {
             "nrqlQueries": [
               {
                 "accountId": 3361966,
-                "query": "SELECT average(duration) as ' End User Time', average(backendDuration) as ' App Server Time ' FROM PageView SINCE 1 day ago  TIMESERIES"
+                "query": "SELECT count(*) FROM PageView since 1 days ago FACET pageUrl limit 25"
               }
             ]
           },
-          "title": "Recent End User & App Server Performance",
+          "title": "Most Frequently Viewed Pages",
           "visualization": {
-            "id": "viz.line"
+            "id": "viz.bar"
           }
         },
         {
@@ -109,40 +158,40 @@
           "layout": {
             "column": 5,
             "height": 3,
-            "row": 5,
+            "row": 7,
             "width": 4
           },
           "rawConfiguration": {
             "nrqlQueries": [
               {
                 "accountId": 3361966,
-                "query": "SELECT count(*) FROM PageView FACET hourof(timestamp) SINCE 24 hours ago"
+                "query": "SELECT average(duration) from PageView since 7 day ago FACET pageUrl"
               }
             ]
           },
-          "title": "Daily Page Views By Hour",
+          "title": "Slowest Pages",
           "visualization": {
-            "id": "viz.pie"
+            "id": "viz.bar"
           }
         },
         {
           "layout": {
             "column": 9,
             "height": 3,
-            "row": 5,
+            "row": 7,
             "width": 4
           },
           "rawConfiguration": {
             "nrqlQueries": [
               {
                 "accountId": 3361966,
-                "query": "SELECT count(*) FROM PageView since 1 days ago FACET pageUrl limit 25"
+                "query": "SELECT histogram(duration, 10, 30) FROM PageView SINCE 1 day ago"
               }
             ]
           },
-          "title": "Most Frequently Viewed Pages",
+          "title": "Page Load Time - Histogram",
           "visualization": {
-            "id": "viz.bar"
+            "id": "viz.histogram"
           }
         },
         {
@@ -169,18 +218,18 @@
           "layout": {
             "column": 5,
             "height": 3,
-            "row": 8,
+            "row": 10,
             "width": 4
           },
           "rawConfiguration": {
             "nrqlQueries": [
               {
                 "accountId": 3361966,
-                "query": "SELECT average(duration) from PageView since 7 day ago FACET pageUrl"
+                "query": "SELECT count(*) FROM PageView since 1 day ago FACET  city"
               }
             ]
           },
-          "title": "Slowest Pages",
+          "title": "What Cities Are My Users In?",
           "visualization": {
             "id": "viz.bar"
           }
@@ -189,20 +238,20 @@
           "layout": {
             "column": 9,
             "height": 3,
-            "row": 8,
+            "row": 10,
             "width": 4
           },
           "rawConfiguration": {
             "nrqlQueries": [
               {
                 "accountId": 3361966,
-                "query": "SELECT histogram(duration, 10, 30) FROM PageView SINCE 1 day ago"
+                "query": "SELECT count(*) FROM PageView since 1 days ago facet userAgentName, userAgentOS"
               }
             ]
           },
-          "title": "Page Load Time - Histogram",
+          "title": "Browser and OS Usage",
           "visualization": {
-            "id": "viz.histogram"
+            "id": "viz.pie"
           }
         },
         {
@@ -227,42 +276,22 @@
         },
         {
           "layout": {
-            "column": 5,
-            "height": 3,
-            "row": 11,
-            "width": 4
-          },
-          "rawConfiguration": {
-            "nrqlQueries": [
-              {
-                "accountId": 3361966,
-                "query": "SELECT count(*) FROM PageView since 1 day ago FACET  city"
-              }
-            ]
-          },
-          "title": "What Cities Are My Users In?",
-          "visualization": {
-            "id": "viz.bar"
-          }
-        },
-        {
-          "layout": {
             "column": 9,
             "height": 3,
-            "row": 11,
+            "row": 13,
             "width": 4
           },
           "rawConfiguration": {
             "nrqlQueries": [
               {
                 "accountId": 3361966,
-                "query": "SELECT count(*) FROM PageView since 1 days ago facet userAgentName, userAgentOS"
+                "query": "SELECT average(duration) FROM PageView FACET asnOrganization SINCE 1 day ago"
               }
             ]
           },
-          "title": "Browser and OS Usage",
+          "title": "Slowest ASN's",
           "visualization": {
-            "id": "viz.pie"
+            "id": "viz.bar"
           }
         },
         {
@@ -283,26 +312,6 @@
           "title": "Browser Usage %'s",
           "visualization": {
             "id": "viz.billboard"
-          }
-        },
-        {
-          "layout": {
-            "column": 9,
-            "height": 3,
-            "row": 14,
-            "width": 4
-          },
-          "rawConfiguration": {
-            "nrqlQueries": [
-              {
-                "accountId": 3361966,
-                "query": "SELECT average(duration) FROM PageView FACET asnOrganization SINCE 1 day ago"
-              }
-            ]
-          },
-          "title": "Slowest ASN's",
-          "visualization": {
-            "id": "viz.bar"
           }
         }
       ]
