@@ -698,14 +698,12 @@
             "width": 4
           },
           "rawConfiguration": {
-            "dataFormatters": [],
             "nrqlQueries": [
               {
                 "accountId": 3361966,
-                "query": "SELECT uniqueCount(session) FROM PageView since 60 minute ago until 15 seconds ago COMPARE WITH 1 hour ago"
+                "query": "SELECT uniqueCount(session) FROM PageView since 60 minute ago until 10 seconds ago COMPARE WITH 1 hour ago"
               }
-            ],
-            "thresholds": []
+            ]
           },
           "title": "How many users does my site have?",
           "visualization": {
