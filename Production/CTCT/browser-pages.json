@@ -33,6 +33,9 @@
             "width": 4
           },
           "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
             "nrqlQueries": [
               {
                 "accountId": 3361966,
@@ -42,7 +45,7 @@
           },
           "title": "Total Recent Page Views",
           "visualization": {
-            "id": "viz.pie"
+            "id": "viz.bar"
           }
         },
         {
