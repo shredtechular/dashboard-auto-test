@@ -56,10 +56,16 @@
             "width": 4
           },
           "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
             "nrqlQueries": [
               {
                 "accountId": 3361966,
-                "query": "SELECT average(duration) FROM PageView  since 1 day ago  FACET appName TIMESERIES"
+                "query": "SELECT average(duration) FROM PageView  since 3 days ago  FACET appName TIMESERIES"
               }
             ]
           },
@@ -96,6 +102,10 @@
             "width": 4
           },
           "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
             "nrqlQueries": [
               {
                 "accountId": 3361966,
@@ -105,7 +115,7 @@
           },
           "title": "Weekly Page Views By Day",
           "visualization": {
-            "id": "viz.bar"
+            "id": "viz.table"
           }
         },
         {
@@ -116,6 +126,9 @@
             "width": 4
           },
           "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": true
+            },
             "nrqlQueries": [
               {
                 "accountId": 3361966,
@@ -123,7 +136,7 @@
               }
             ]
           },
-          "title": "Daily Page Views By Hour",
+          "title": "Daily Page Views By Hours",
           "visualization": {
             "id": "viz.pie"
           }
