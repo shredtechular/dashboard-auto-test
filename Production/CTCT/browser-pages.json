@@ -1,0 +1,2869 @@
+{
+  "name": "Browser Pages Dashboard",
+  "pages": [
+    {
+      "name": "Browser Users Dashboard",
+      "widgets": [
+        {
+          "layout": {
+            "column": 1,
+            "height": 1,
+            "row": 1,
+            "width": 12
+          },
+          "rawConfiguration": {
+            "ghBaseURL": null,
+            "ghOwner": "shredtechular",
+            "ghPath": "Production/CTCT/browser-pages.json",
+            "ghRepo": "dashboard-auto-test",
+            "ghToken": "Z2hwX3lhdThoZkFvMzEybFNYaHduT1llSVM0VFZpTWx2YTRBUXhUdw==",
+            "nrDashId": "MzM2MTk2NnxWSVp8REFTSEJPQVJEfGRhOjc0NDExMw",
+            "pollingMs": "5000"
+          },
+          "title": "GitHub Version Control for Dashboards",
+          "visualization": {
+            "id": "64f5a379-c720-456e-a6bb-cf3885a7ba77.nr1-dashboard-gh-version-control"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 2,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView since 1 day ago FACET  appName"
+              }
+            ]
+          },
+          "title": "Total Recent Page Views",
+          "visualization": {
+            "id": "viz.pie"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 2,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(duration) FROM PageView  since 1 day ago  FACET appName TIMESERIES"
+              }
+            ]
+          },
+          "title": "Recent Average Response Time",
+          "visualization": {
+            "id": "viz.area"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 2,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(duration) as ' End User Time', average(backendDuration) as ' App Server Time ' FROM PageView SINCE 1 day ago  TIMESERIES"
+              }
+            ]
+          },
+          "title": "Recent End User & App Server Performance",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 5,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView FACET weekDayOf(timestamp)  since 7 day ago  limit 7"
+              }
+            ]
+          },
+          "title": "Weekly Page Views By Day",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 5,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView FACET hourof(timestamp) SINCE 24 hours ago"
+              }
+            ]
+          },
+          "title": "Daily Page Views By Hour",
+          "visualization": {
+            "id": "viz.pie"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 5,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView since 1 days ago FACET pageUrl limit 25"
+              }
+            ]
+          },
+          "title": "Most Frequently Viewed Pages",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 8,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(duration) FROM PageView since 1 day ago FACET pageUrl TIMESERIES AUTO"
+              }
+            ]
+          },
+          "title": "Slowest Page Load Times",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 8,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(duration) from PageView since 7 day ago FACET pageUrl"
+              }
+            ]
+          },
+          "title": "Slowest Pages",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 8,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT histogram(duration, 10, 30) FROM PageView SINCE 1 day ago"
+              }
+            ]
+          },
+          "title": "Page Load Time - Histogram",
+          "visualization": {
+            "id": "viz.histogram"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 11,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView SINCE 1 day ago FACET countryCode"
+              }
+            ]
+          },
+          "title": "Customers by Country",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 11,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView since 1 day ago FACET  city"
+              }
+            ]
+          },
+          "title": "What Cities Are My Users In?",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 11,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView since 1 days ago facet userAgentName, userAgentOS"
+              }
+            ]
+          },
+          "title": "Browser and OS Usage",
+          "visualization": {
+            "id": "viz.pie"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 14,
+            "width": 8
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT percentage(uniqueCount(session), WHERE userAgentName = 'IE') AS '% of IE Users', percentage(uniqueCount(session), WHERE userAgentName = 'Chrome') AS '% of Chrome Users', percentage(uniqueCount(session), WHERE userAgentName = 'Firefox') AS '% of Firefox Users', percentage(uniqueCount(session), WHERE userAgentName = 'Safari') AS '% of Safari Users' FROM PageView SINCE 1 day ago"
+              }
+            ]
+          },
+          "title": "Browser Usage %'s",
+          "visualization": {
+            "id": "viz.billboard"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 14,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(duration) FROM PageView FACET asnOrganization SINCE 1 day ago"
+              }
+            ]
+          },
+          "title": "Slowest ASN's",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Core Web Vitals",
+      "widgets": [
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 1,
+            "width": 6
+          },
+          "rawConfiguration": {
+            "text": "![Add Images](https://docs.newrelic.com/sites/default/files/thumbnails/image/core-web-vitals_0.png)\n"
+          },
+          "title": "",
+          "visualization": {
+            "id": "viz.markdown"
+          }
+        },
+        {
+          "layout": {
+            "column": 7,
+            "height": 3,
+            "row": 1,
+            "width": 2
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT percentage(count(*), WHERE largestContentfulPaint < 2.5) AS 'good (< 2.5)', percentage(count(*), WHERE largestContentfulPaint >= 2.5 and largestContentfulPaint < 4) AS 'needs improvement (>= 2.5 < 4)', percentage(count(*), WHERE largestContentfulPaint >= 4) AS 'poor (>=4)' FROM PageViewTiming WHERE timingName = 'largestContentfulPaint' SINCE 1 week ago"
+              }
+            ]
+          },
+          "title": "LCP Rating",
+          "visualization": {
+            "id": "viz.billboard"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 1,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT percentage(count(*), WHERE largestContentfulPaint < 2.5) AS 'good (< 2.5)', percentage(count(*), WHERE largestContentfulPaint >= 2.5 and largestContentfulPaint < 4) AS 'needs improvement (>= 2.5 < 4)', percentage(count(*), WHERE largestContentfulPaint >= 4) AS 'poor (>=4)' FROM PageViewTiming WHERE  timingName = 'largestContentfulPaint' SINCE 1 week ago TIMESERIES"
+              }
+            ]
+          },
+          "title": "LCP Over Time",
+          "visualization": {
+            "id": "viz.area"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 2,
+            "row": 4,
+            "width": 2
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT percentile(firstInputDelay, 75) FROM PageViewTiming WHERE timingName = 'firstInteraction' FACET appName  SINCE 1 day ago COMPARE WITH 1 week ago"
+              }
+            ]
+          },
+          "title": "First Input Delay (FID) (ms)",
+          "visualization": {
+            "id": "viz.billboard"
+          }
+        },
+        {
+          "layout": {
+            "column": 3,
+            "height": 2,
+            "row": 4,
+            "width": 2
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT percentile(cumulativeLayoutShift, 75) FROM PageViewTiming  WHERE cumulativeLayoutShift IS NOT NULL AND timingName = 'pageHide' FACET appName SINCE 1 day ago COMPARE WITH 1 week ago"
+              }
+            ]
+          },
+          "title": "Cumulative Layout Shift Score (CLS)",
+          "visualization": {
+            "id": "viz.billboard"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 2,
+            "row": 4,
+            "width": 2
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT percentile(largestContentfulPaint, 75) FROM PageViewTiming WHERE timingName = 'largestContentfulPaint' FACET appName SINCE 1 day ago COMPARE WITH 1 week ago"
+              }
+            ]
+          },
+          "title": "Largest Contentful Paint (LCP)",
+          "visualization": {
+            "id": "viz.billboard"
+          }
+        },
+        {
+          "layout": {
+            "column": 7,
+            "height": 4,
+            "row": 4,
+            "width": 2
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT percentage(count(*), WHERE cumulativeLayoutShift < 0.1) AS 'good (< 0.1)', percentage(count(*), WHERE cumulativeLayoutShift >= 0.1 AND cumulativeLayoutShift < 0.25) AS 'needs improvement (>= 0.1 < 0.25)', percentage(count(*), WHERE cumulativeLayoutShift >= 0.25) AS 'poor (>=0.25)'  FROM PageViewTiming WHERE cumulativeLayoutShift IS NOT NULL AND timingName = 'pageHide' SINCE 1 week ago"
+              }
+            ]
+          },
+          "title": "CLS Rating",
+          "visualization": {
+            "id": "viz.billboard"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 4,
+            "row": 4,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT percentage(count(*), WHERE cumulativeLayoutShift < 0.1) AS 'good (< 0.1)', percentage(count(*), WHERE cumulativeLayoutShift >= 0.1 AND cumulativeLayoutShift < 0.25) AS 'needs improvement (>= 0.1 < 0.25)', percentage(count(*), WHERE cumulativeLayoutShift >= 0.25) AS 'poor (>=0.25)'  FROM PageViewTiming WHERE cumulativeLayoutShift IS NOT NULL AND timingName = 'pageHide'  TIMESERIES SINCE 1 week ago"
+              }
+            ]
+          },
+          "title": "CLS Over Time",
+          "visualization": {
+            "id": "viz.area"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 6,
+            "width": 2
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT percentile(largestContentfulPaint, 75), percentile(largestContentfulPaint, 95), percentile(largestContentfulPaint, 99) FROM PageViewTiming WHERE timingName = 'largestContentfulPaint'"
+              }
+            ]
+          },
+          "title": "LCP - Percentiles",
+          "visualization": {
+            "id": "viz.billboard"
+          }
+        },
+        {
+          "layout": {
+            "column": 3,
+            "height": 3,
+            "row": 6,
+            "width": 2
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT percentile(cumulativeLayoutShift, 75), percentile(cumulativeLayoutShift, 95), percentile(cumulativeLayoutShift, 99) FROM PageViewTiming WHERE cumulativeLayoutShift IS NOT NULL AND timingName = 'pageHide'"
+              }
+            ]
+          },
+          "title": "CLS Percentiles (score)",
+          "visualization": {
+            "id": "viz.billboard"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 6,
+            "width": 2
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT percentile(firstInputDelay, 75), percentile(firstInputDelay, 95), percentile(firstInputDelay, 99) FROM PageViewTiming WHERE timingName = 'firstInteraction'"
+              }
+            ]
+          },
+          "title": "FID percentiles",
+          "visualization": {
+            "id": "viz.billboard"
+          }
+        },
+        {
+          "layout": {
+            "column": 7,
+            "height": 4,
+            "row": 8,
+            "width": 2
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT percentage(count(*), WHERE firstInputDelay < 100) AS 'good (<100ms)', percentage(count(*), WHERE firstInputDelay >= 100 and firstInputDelay < 300) AS 'needs improvement (>=100 <300ms)', percentage(count(*), WHERE firstInputDelay >= 300) AS 'poor (> 300ms)' FROM PageViewTiming WHERE firstInputDelay IS NOT NULL since 1 week ago "
+              }
+            ]
+          },
+          "title": "FID Rating",
+          "visualization": {
+            "id": "viz.billboard"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 4,
+            "row": 8,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT percentage(count(*), WHERE firstInputDelay < 100) AS 'good (<100ms)', percentage(count(*), WHERE firstInputDelay >= 100 and firstInputDelay < 300) AS 'needs improvement (>=100 <300ms)', percentage(count(*), WHERE firstInputDelay >= 300) AS 'poor (> 300ms)' FROM PageViewTiming WHERE firstInputDelay IS NOT NULL since 1 week ago TIMESERIES "
+              }
+            ]
+          },
+          "title": "FID Rating Over Time",
+          "visualization": {
+            "id": "viz.area"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 9,
+            "width": 2
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT percentile(firstContentfulPaint, 75) as 'First Contentful Paint' FROM PageViewTiming "
+              }
+            ]
+          },
+          "title": "First Contentful Paint (FCP)",
+          "visualization": {
+            "id": "viz.billboard"
+          }
+        },
+        {
+          "layout": {
+            "column": 3,
+            "height": 3,
+            "row": 9,
+            "width": 2
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT percentile(pageHide, 75) FROM PageViewTiming SINCE 1 day ago"
+              }
+            ]
+          },
+          "title": "PageHide",
+          "visualization": {
+            "id": "viz.billboard"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 9,
+            "width": 2
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT percentile(firstInputDelay, 75) FROM PageViewTiming WHERE timingName = 'firstInteraction' FACET interactionType LIMIT max"
+              }
+            ]
+          },
+          "title": "First Input Delay (FID) (ms) - Interaction Type",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 5,
+            "row": 12,
+            "width": 12
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT percentile(firstContentfulPaint, 75), percentile(largestContentfulPaint, 75), percentile(firstInputDelay, 75), max(firstInputDelay), filter(percentile(cumulativeLayoutShift, 75), WHERE timingName = 'pageHide') as 'Cumulative Layout Shift', percentile(pageHide, 75) FROM PageViewTiming  FACET browserTransactionName LIMIT 50"
+              }
+            ]
+          },
+          "title": "Click to Filter to Transaction Name",
+          "visualization": {
+            "id": "viz.table"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 17,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "FROM PageViewTiming SELECT histogram(firstInputDelay, 1000, 10) SINCE 3 hours ago"
+              }
+            ]
+          },
+          "title": "FID Histogram",
+          "visualization": {
+            "id": "viz.histogram"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 17,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "FROM PageViewTiming SELECT histogram(cumulativeLayoutShift, 1, 40) WHERE timingName = 'pageHide' SINCE 3 hours ago"
+              }
+            ]
+          },
+          "title": "CLS Histogram (Want < 0.1)",
+          "visualization": {
+            "id": "viz.histogram"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tell Me About My Users",
+      "widgets": [
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 1,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT uniqueCount(session) FROM PageView since 60 minute ago until 10 seconds ago COMPARE WITH 1 hour ago"
+              }
+            ]
+          },
+          "title": "How many users does my site have?",
+          "visualization": {
+            "id": "viz.billboard"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 1,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView since 1 day ago FACET  appName"
+              }
+            ]
+          },
+          "title": "Which Apps Are Being Used?",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 1,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView since 1 day ago FACET  pageUrl"
+              }
+            ]
+          },
+          "title": "What Pages Are Most Popular?",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 4,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView FACET weekdayOf(timestamp) SINCE 7 days ago"
+              }
+            ]
+          },
+          "title": "What days are busiest?",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 4,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT session FROM PageView since 60 minute ago until 10 seconds ago"
+              }
+            ]
+          },
+          "title": "Live Sessions - Who's on my app?",
+          "visualization": {
+            "id": "viz.table"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 4,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView since 1 day ago FACET  city"
+              }
+            ]
+          },
+          "title": "What Cities Are My Users In?",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 7,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView FACET hourOf(timestamp) SINCE 7 days ago"
+              }
+            ]
+          },
+          "title": "What Time Do They Visit?",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 7,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView since 1 day ago FACET  countryCode"
+              }
+            ]
+          },
+          "title": "What Country Are My Users In?",
+          "visualization": {
+            "id": "viz.pie"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 7,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView since 1 day ago FACET  userAgentName"
+              }
+            ]
+          },
+          "title": "Which Browsers Are Used?",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 10,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT histogram(duration) FROM PageView SINCE 1 day ago"
+              }
+            ]
+          },
+          "title": "Page Load Time - Histogram",
+          "visualization": {
+            "id": "viz.histogram"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 10,
+            "width": 8
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(duration) FROM PageView since 1 day ago FACET appName TIMESERIES AUTO"
+              }
+            ]
+          },
+          "title": "Average Overall Response",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 13,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(duration) as ' End User Time', average(backendDuration) as ' App Server Time ' FROM PageView SINCE 2 minutes ago UNTIL 10 seconds ago TIMESERIES"
+              }
+            ]
+          },
+          "title": "End User & App Server Performance",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 13,
+            "width": 8
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(duration) FROM PageView since 1 day ago FACET pageUrl TIMESERIES AUTO"
+              }
+            ]
+          },
+          "title": "Which Pages Are Slowest?",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 6,
+            "row": 16,
+            "width": 12
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView since 1 day ago FACET  userAgentOS"
+              }
+            ]
+          },
+          "title": "What OS Are My Users Using?",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        }
+      ]
+    },
+    {
+      "name": "DCX",
+      "widgets": [
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 1,
+            "width": 12
+          },
+          "rawConfiguration": {
+            "text": "# Digital Customer Experience (DCX)\n---\nWhere do you start on your DCX journey? Start by:  \n1. Instrumenting end-to-end: **front-end**, your **apps**, your infrastructure, and your **availability** through synthetic monitoring\n2. Fixing obvious problems,\n3. Identifying performance and availability SLIs, and establish baselines,  \n4. Setting SLOs, and configuring alerts.\n## Golden Signals: 1. Errors, 2. Traffic, 3. Latency, and 4. Saturation"
+          },
+          "title": "",
+          "visualization": {
+            "id": "viz.markdown"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 4,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "text": "# Browser Facets\nTo drill down to specific areas of interest:\n\n1. Use search field on top of the page\n2. Click on application, browser, city, country, domain, OS, or popular page for other widgets to adjust"
+          },
+          "title": "",
+          "visualization": {
+            "id": "viz.markdown"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 4,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView since 1 day ago FACET  countryCode"
+              }
+            ]
+          },
+          "title": "Which country are users in?",
+          "visualization": {
+            "id": "viz.pie"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 4,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView since 1 day ago FACET userAgentName"
+              }
+            ]
+          },
+          "title": "Which browsers are used?",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 7,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT uniqueCount(session) FROM PageView since 60 minute ago until 10 seconds ago COMPARE WITH 1 hour ago"
+              }
+            ]
+          },
+          "title": "How many users does the applications have?",
+          "visualization": {
+            "id": "viz.billboard"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 7,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView since 1 day ago FACET city"
+              }
+            ]
+          },
+          "title": "Which cities are users in?",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 7,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView since 1 day ago FACET userAgentOS"
+              }
+            ]
+          },
+          "title": "Which OSs are in use?",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 10,
+            "width": 12
+          },
+          "rawConfiguration": {
+            "text": "## SRE Golden Signal 1: Errors - Fix known errors\n**APM**  \n&nbsp;-&nbsp;Top errors by APM app  \n&nbsp;-&nbsp;Error rate by APM app over time  \n**Browser**,  \n&nbsp;-&nbsp;Top JavaScript Errors by URI **(not shown, needs Pro configuration)**  \n&nbsp;-&nbsp;JavaScript Errors by URI over time **(not shown, needs Pro configuration)**  \n**Synthetics**  \n&nbsp;-&nbsp;Monitor (un)availability over time  \n&nbsp;-&nbsp;Monitor (un)availability and type by most unavailable  \n&nbsp;-&nbsp;Error Budget **(not shown)**"
+          },
+          "title": "",
+          "visualization": {
+            "id": "viz.markdown"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 13,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) from TransactionError facet `error.message` since 1 day ago"
+              }
+            ]
+          },
+          "title": "Errors: Top Errors (by message)",
+          "visualization": {
+            "id": "viz.pie"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 13,
+            "width": 8
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) from TransactionError facet appName TIMESERIES auto since 1 day ago"
+              }
+            ]
+          },
+          "title": "Errors: Error Rate (by APM App)",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 16,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT percentage(count(*), WHERE result = 'FAILED') AS 'Unavailability %' From SyntheticCheck SINCE 1 month AGO FACET monitorName, typeLabel"
+              }
+            ]
+          },
+          "title": "Errors: Synthetics Unavailability % over time (by Monitor)",
+          "visualization": {
+            "id": "viz.table"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 16,
+            "width": 8
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "From SyntheticCheck SELECT percentage(count(*), WHERE result = 'FAILED') AS 'Unavailability %' SINCE 30 DAY AGO TIMESERIES AUTO FACET monitorName"
+              }
+            ]
+          },
+          "title": "Errors: Synthetics Unavailability % over time (by Monitor)",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 19,
+            "width": 12
+          },
+          "rawConfiguration": {
+            "text": "## SRE Golden Signal 2: Traffic - Throughput\nIdentify Service Level Indicators (SLIs) and establish baselines, set Service Level Objectives (SLOs)\n  \n**APM**  \n&nbsp;-&nbsp;Top Throughput by application  \n&nbsp;-&nbsp;Highest throughput over time by application  \n**Browser**  \n&nbsp;-&nbsp;Highest number of sessions over time by application"
+          },
+          "title": "",
+          "visualization": {
+            "id": "viz.markdown"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 22,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM Transaction SINCE 1 DAY AGO FACET appName"
+              }
+            ]
+          },
+          "title": "Traffic: Top Throughput (by APM app)",
+          "visualization": {
+            "id": "viz.pie"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 22,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView FACET weekdayOf(timestamp) SINCE 7 days ago"
+              }
+            ]
+          },
+          "title": "Which days are the busiest?",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 22,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT uniqueCount(session) FROM PageView SINCE 1 day ago FACET appName TIMESERIES 15 minutes"
+              }
+            ]
+          },
+          "title": "Traffic: Sessions (by Browser App)",
+          "visualization": {
+            "id": "viz.area"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 25,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM Transaction SINCE 1 DAY AGO FACET appName TIMESERIES AUTO"
+              }
+            ]
+          },
+          "title": "Traffic: Throughput (by APM App)",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 25,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(duration) as ' End User Time', average(backendDuration) as ' App Server Time ' FROM PageView SINCE 2 minutes ago UNTIL 10 seconds ago TIMESERIES"
+              }
+            ]
+          },
+          "title": "End user and app server performance",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 25,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView since 1 day ago FACET  pageUrl"
+              }
+            ]
+          },
+          "title": "Which pages are most popular?",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 28,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT histogram(duration) FROM PageView SINCE 1 day ago"
+              }
+            ]
+          },
+          "title": "Page load time - histogram",
+          "visualization": {
+            "id": "viz.histogram"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 28,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView since 1 day ago FACET domain"
+              }
+            ]
+          },
+          "title": "Which domains are most popular?",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 28,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT 3 as 'Good', 7 as 'OK', average(duration), percentile(duration, 50), percentile(duration, 67), percentile(duration, 95) from PageView TIMESERIES AUTO"
+              }
+            ]
+          },
+          "title": "Overall page performance",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 31,
+            "width": 12
+          },
+          "rawConfiguration": {
+            "text": "## SRE Golden Signal 3: Latency - Performance\n  \nIdentify Service Level Indicators (SLIs) and establish baselines, set Service Level Objectives (SLOs)  \n  \n**APM**  \n&nbsp;-&nbsp;Highest latency of 2xx, 4xx, 5xx responses by app  \n&nbsp;-&nbsp;Most frustrating Apdex (0.5 T) by transaction  \n**Browser**  \n&nbsp;-&nbsp;Most frustrating Apdex (3.0 T) by domain  \n&nbsp;-&nbsp;Time to first byte / Time to render (**needs Pro configuration**)  \n**Synthetics**  \n&nbsp;-&nbsp;Slowest Average Resource"
+          },
+          "title": "",
+          "visualization": {
+            "id": "viz.markdown"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 34,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(duration) FROM Transaction WHERE httpResponseCode = '200' since 1 day ago FACET appName TIMESERIES AUTO"
+              }
+            ]
+          },
+          "title": "Latency: Avg 200 Response Time (by App)",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 34,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(duration) FROM Transaction WHERE httpResponseCode LIKE '4%' since 1 day ago FACET appName TIMESERIES AUTO"
+              }
+            ]
+          },
+          "title": "Latency: Avg 4xx Response Time (by App)",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 34,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(duration) FROM Transaction WHERE httpResponseCode LIKE '5%' since 1 day ago FACET appName TIMESERIES AUTO"
+              }
+            ]
+          },
+          "title": "Latency: Avg 5xx Response Time (by App)",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 37,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT filter(count(*), WHERE duration > 2) AS Frustrating, filter(count(*), WHERE (duration > 0.5) AND (duration <= 2)) AS Tolerating, filter(count(*), WHERE duration <= 0.5) AS Satisfied, apdex(duration, 0.5), count(*) AS Total FROM Transaction FACET name LIMIT 20"
+              }
+            ]
+          },
+          "title": "Latency: Most Frustration Apdex (0.5 T) by APM Transaction",
+          "visualization": {
+            "id": "viz.pie"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 37,
+            "width": 8
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT filter(count(*), WHERE duration > 2 OR error IS true) AS Frustrating FROM Transaction TIMESERIES FACET name LIMIT 10"
+              }
+            ]
+          },
+          "title": "Most Frustration Apdex (0.5 T) by APM Transaction",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 40,
+            "width": 12
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT filter(count(*), WHERE duration > 2 OR error IS true) AS Frustrating, filter(count(*), WHERE (duration > 0.5) AND (duration <= 2)) AS Tolerating, filter(count(*), WHERE duration <= 0.5) AS Satisfied, apdex(duration, 0.5), count(*) AS Total FROM Transaction  FACET name  LIMIT 20"
+              }
+            ]
+          },
+          "title": "Latency: Apdex (0.5 T) by Most Frustrated APM Transaction",
+          "visualization": {
+            "id": "viz.table"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 43,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT filter(count(*), WHERE duration > 12 OR error IS true) AS Frustrating, filter(count(*), WHERE (duration > 3) AND (duration <= 12)) AS Tolerating, filter(count(*), WHERE duration <= 3) AS Satisfied, apdex(duration, 3), count(*) AS Total FROM PageView WHERE domain NOT LIKE '%test%' FACET domain LIMIT 20"
+              }
+            ]
+          },
+          "title": "Latency: Most Frustration Apdex (3.0 T) by Browser Domain",
+          "visualization": {
+            "id": "viz.pie"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 43,
+            "width": 8
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT filter(count(*), WHERE duration > 12 OR error IS true) AS Frustrating FROM PageView WHERE domain NOT LIKE '%test%' TIMESERIES FACET domain LIMIT 10"
+              }
+            ]
+          },
+          "title": "Most Frustration Apdex (3.0 T) by Browser Domain",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 46,
+            "width": 12
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT filter(count(*), WHERE duration > 12 OR error IS true) AS Frustrating, filter(count(*), WHERE (duration > 3) AND (duration <= 12)) AS Tolerating, filter(count(*), WHERE duration <= 3) AS Satisfied, filter(count(*), WHERE error IS true) as Errors, apdex(duration, 3), count(*) AS Total FROM PageView WHERE domain NOT LIKE '%test%' FACET domain"
+              }
+            ]
+          },
+          "title": "Latency: Apdex (3.0 T) by Most Frustrated Browser Domain",
+          "visualization": {
+            "id": "viz.table"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 49,
+            "width": 12
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(duration)/1000 AS 'Average Duration (Secs)' FROM SyntheticRequest FACET domain, monitorName, hierarchicalURL, contentType, isAjax, externalResource"
+              }
+            ]
+          },
+          "title": "Latency: Synthetics Slowest Average Resource",
+          "visualization": {
+            "id": "viz.table"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 52,
+            "width": 12
+          },
+          "rawConfiguration": {
+            "text": "## SRE 4 Golden Signal 4: Saturation  \nIdentify Service Level Indicators (SLIs) and establish baselines, set Service Level Objectives (SLOs)  \n\n**Infrastructure**  \n&nbsp;-&nbsp;Highest(/top) average CPU by host bar chart  \n&nbsp;-&nbsp;Highest(/top) average CPU by host over time  \n&nbsp;-&nbsp;Top 98th percentile disk utilization by host bar chart  \n&nbsp;-&nbsp;Top 98th percentile disk utilization by host over time"
+          },
+          "title": "",
+          "visualization": {
+            "id": "viz.markdown"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 55,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT percentile(diskUtilizationPercent, 98) FROM SystemSample facet hostname since 1 hour ago"
+              }
+            ]
+          },
+          "title": "Saturation: Top 10 Disk (by Host)",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 55,
+            "width": 8
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(cpuPercent) FROM SystemSample TIMESERIES FACET entityName LIMIT 10 SINCE 60 minutes ago"
+              }
+            ]
+          },
+          "title": "Saturation: Top 10 Average CPU (by Entity)",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 58,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(cpuPercent) FROM SystemSample FACET entityName LIMIT 10 SINCE 60 minutes ago"
+              }
+            ]
+          },
+          "title": "Saturation: Top 10 Average CPU (by Entity)",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 58,
+            "width": 8
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT percentile(diskUtilizationPercent, 98) FROM SystemSample timeseries facet hostname since 1 hour ago"
+              }
+            ]
+          },
+          "title": "Saturation: Top 10 Disk Utilization (by Host)",
+          "visualization": {
+            "id": "viz.line"
+          }
+        }
+      ]
+    },
+    {
+      "name": "JS Errors Dashboard",
+      "widgets": [
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 1,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) from JavaScriptError FACET errorClass"
+              }
+            ]
+          },
+          "title": "JS Errors by Error Class",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 1,
+            "width": 8
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) from JavaScriptError TIMESERIES AUTO compare with 1 week ago"
+              }
+            ]
+          },
+          "title": "JS Errors compared with past JS error trends",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 4,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) from JavaScriptError FACET appName"
+              }
+            ]
+          },
+          "title": "JS Errors by App Name",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 4,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) from JavaScriptError FACET errorMessage"
+              }
+            ]
+          },
+          "title": "JS Errors by Error Message",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 4,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM JavaScriptError FACET browserInteractionId"
+              }
+            ]
+          },
+          "title": "JS Errors by BrowserInteraction ID's",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 7,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM JavaScriptError FACET userAgentName"
+              }
+            ]
+          },
+          "title": "JS Errors by Browser",
+          "visualization": {
+            "id": "viz.pie"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 7,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM JavaScriptError FACET userAgentOS"
+              }
+            ]
+          },
+          "title": "JS Errors by OS",
+          "visualization": {
+            "id": "viz.pie"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 7,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM JavaScriptError FACET deviceType"
+              }
+            ]
+          },
+          "title": "JS Errors by Device Type",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 10,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM JavaScriptError FACET requestUri"
+              }
+            ]
+          },
+          "title": "JS Errors by Request URI",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Trends",
+      "widgets": [
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 1,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "text": "![Image](https://newrelic.com/content/dam/component-assets/u03-navigation/logo-browser.svg)\n* Use below charts to filter by Domain, Category, Device, Country or Browser\n* Use calendar options on the right to filter\n* Narrow results up to 1 URL from the URL Heatmap\n* Compare funnels between slow & fast pages\n* Compare Front-End vs Back-End Performance\n* [Dive deeper into Real User Monitoring](https://rpm.newrelic.com/accounts/68957/browser)"
+          },
+          "title": "",
+          "visualization": {
+            "id": "viz.markdown"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 1,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT funnel(session, WHERE pageUrl LIKE '%panier.html' AS 'Panier', WHERE pageUrl LIKE '%paiement.html' AS 'Paiement') FROM PageView SINCE 1 week ago"
+              }
+            ]
+          },
+          "title": "Funnel (Cart > Paiement)",
+          "visualization": {
+            "id": "viz.funnel"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 1,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT histogram(duration, width: 10) FROM PageView  since 1 week ago"
+              }
+            ]
+          },
+          "title": "Page Load Distribution",
+          "visualization": {
+            "id": "viz.histogram"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 4,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView  facet domain  since 1 day ago"
+              }
+            ]
+          },
+          "title": "Pages Views by Domain",
+          "visualization": {
+            "id": "viz.pie"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 4,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView  facet domain  since 1 day ago TIMESERIES"
+              }
+            ]
+          },
+          "title": "Page Views by Domain",
+          "visualization": {
+            "id": "viz.area"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 4,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(duration) FROM PageView  facet domain since 1 day ago timeseries"
+              }
+            ]
+          },
+          "title": "Page Load Time by Domain",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 7,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView  FACET CASES(where pageUrl like '%/' AS 'Home Page', WHERE pageUrl like '%/c/%' AS 'Catalogue', WHERE pageUrl like '%/p/%' AS 'Produit', WHERE pageUrl LIKE '%panier.html' AS 'Panier', WHERE pageUrl LIKE '%order/signin' AS 'signin', WHERE pageUrl LIKE '%paiement.html' AS 'Paiement' ) since 1 day ago"
+              }
+            ]
+          },
+          "title": "Page Views by Category",
+          "visualization": {
+            "id": "viz.pie"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 7,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView FACET CASES(where pageUrl like '%/' AS 'Home Page', WHERE pageUrl like '%/c/%' AS 'Catalogue', WHERE pageUrl like '%/p/%' AS 'Produit', WHERE pageUrl LIKE '%panier.html' AS 'Panier', WHERE pageUrl LIKE '%order/signin' AS 'signin', WHERE pageUrl LIKE '%paiement.html' AS 'Paiement' )  TIMESERIES  since 1 day ago"
+              }
+            ]
+          },
+          "title": "Page Views by Category",
+          "visualization": {
+            "id": "viz.area"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 7,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(duration) FROM PageView FACET CASES(where pageUrl like '%/' AS 'Home Page', WHERE pageUrl like '%/c/%' AS 'Catalogue', WHERE pageUrl like '%/p/%' AS 'Produit', WHERE pageUrl LIKE '%panier.html' AS 'Panier', WHERE pageUrl LIKE '%order/signin' AS 'signin', WHERE pageUrl LIKE '%paiement.html' AS 'Paiement' ) TIMESERIES  since 1 day ago"
+              }
+            ]
+          },
+          "title": "Page Load Time by Category",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 10,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "select count(*) FROM PageView  FACET deviceType   SINCE 1 DAY AGO"
+              }
+            ]
+          },
+          "title": "Page Views by device",
+          "visualization": {
+            "id": "viz.pie"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 10,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView  FACET deviceType TIMESERIES  SINCE 1 DAY AGO"
+              }
+            ]
+          },
+          "title": "Page Views by device",
+          "visualization": {
+            "id": "viz.area"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 10,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(duration) FROM PageView FACET deviceType TIMESERIES SINCE 1 DAY AGO"
+              }
+            ]
+          },
+          "title": "Page Load Time by device",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 13,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView facet countryCode  since 1 day ago"
+              }
+            ]
+          },
+          "title": "Page Views by Country",
+          "visualization": {
+            "id": "viz.pie"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 13,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(domain) FROM PageView  FACET countryCode  TIMESERIES  SINCE 1 DAY AGO"
+              }
+            ]
+          },
+          "title": "Page Views by Country",
+          "visualization": {
+            "id": "viz.area"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 13,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(duration) FROM PageView  FACET countryCode  SINCE 1 DAY AGO"
+              }
+            ]
+          },
+          "title": "Page Load Time by Country",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 16,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView  facet userAgentName   since 1 day ago"
+              }
+            ]
+          },
+          "title": "Page Views by Browser",
+          "visualization": {
+            "id": "viz.pie"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 16,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView  FACET userAgentName  TIMESERIES  SINCE 1 DAY AGO"
+              }
+            ]
+          },
+          "title": "Page Views by Browser",
+          "visualization": {
+            "id": "viz.area"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 16,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(duration) FROM PageView FACET userAgentName   SINCE 1 DAY AGO"
+              }
+            ]
+          },
+          "title": "Page Load Time by Browser",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 19,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT UniqueCount(session) FROM PageView  since 1 week ago COMPARE WITH 1 week ago"
+              }
+            ]
+          },
+          "title": "Unique Sessions Trend",
+          "visualization": {
+            "id": "viz.billboard"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 19,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView  since 1 week ago COMPARE WITH 1 week ago"
+              }
+            ]
+          },
+          "title": "Page Views Trend",
+          "visualization": {
+            "id": "viz.billboard"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 19,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(duration) as 'seconds' FROM PageView  since 1 week ago COMPARE WITH 1 week ago"
+              }
+            ]
+          },
+          "title": "Page Load Time Trend",
+          "visualization": {
+            "id": "viz.billboard"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 22,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT UniqueCount(session) FROM PageView TIMESERIES since 1 week ago COMPARE WITH 1 week ago"
+              }
+            ]
+          },
+          "title": "Unique Sessions Trend",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 22,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView TIMESERIES since 1 week ago COMPARE WITH 1 week ago"
+              }
+            ]
+          },
+          "title": "Page Views Trend",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 22,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(duration) FROM PageView TIMESERIES since 1 week ago COMPARE WITH 1 week ago"
+              }
+            ]
+          },
+          "title": "Page Load Response Time Trend",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 25,
+            "width": 8
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT histogram(duration, width:10) from PageView  facet pageUrl since 1 day ago"
+              }
+            ]
+          },
+          "title": "URL Page Load Heatmap",
+          "visualization": {
+            "id": "viz.heatmap"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 6,
+            "row": 25,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM PageView facet pageUrl  since 1 day ago"
+              }
+            ]
+          },
+          "title": "Page Views by URL",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 28,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT funnel(session, WHERE pageUrl LIKE '%panier.html' AS 'Panier', WHERE pageUrl LIKE '%paiement.html' AS 'Paiement')  FROM PageView WHERE duration <= 5 SINCE 1 week ago"
+              }
+            ]
+          },
+          "title": "Funnel with Fast Pages (< 5 sec)",
+          "visualization": {
+            "id": "viz.funnel"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 28,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT funnel(session, WHERE pageUrl LIKE '%panier.html' AS 'Panier', WHERE pageUrl LIKE '%paiement.html' AS 'Paiement') FROM PageView WHERE duration > 5 SINCE 1 week ago"
+              }
+            ]
+          },
+          "title": "Funnel with Slow Pages (> 5 sec)",
+          "visualization": {
+            "id": "viz.funnel"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 31,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(networkDuration) as 'Network (sec)', average(backendDuration) as 'Backend Time (sec)',average(duration) as 'Page Load time (sec)' FROM PageView SINCE 1 day ago"
+              }
+            ]
+          },
+          "title": "Page Load (Front-end vs Backend)",
+          "visualization": {
+            "id": "viz.billboard"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 31,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(networkDuration) as 'Network (sec)', average(backendDuration) as 'Backend Time (sec)',average(duration) as 'Page Load time (sec)' FROM PageView SINCE 1 day ago TIMESERIES"
+              }
+            ]
+          },
+          "title": "Page Load Details (Front-end vs Back-end)",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 31,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(duration) FROM PageView since 1 day ago"
+              }
+            ],
+            "thresholds": [
+              {
+                "alertSeverity": "CRITICAL",
+                "value": 2
+              },
+              {
+                "alertSeverity": "WARNING",
+                "value": 1
+              }
+            ]
+          },
+          "title": "Page Load",
+          "visualization": {
+            "id": "viz.billboard"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 34,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(timeToFetchStart) AS 'Request queueing', average(timeToResponseStart) AS 'First byte', average(firstPaint) as 'First paint', average(firstContentfulPaint) as 'First contentful paint', average(timeToDomContentLoadedEventEnd) AS 'DOM content loaded', average(timeToLoadEventEnd) AS 'Window load', average(duration) AS 'Window load + AJAX' FROM BrowserInteraction WHERE category = 'Initial page load' AND `mobileOptimized` IS NULL"
+              }
+            ]
+          },
+          "title": "Page Load Breakdown (SPA Agent only)",
+          "visualization": {
+            "id": "viz.billboard"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 34,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(timeToFetchStart) AS 'Request queueing', average(timeToResponseStart) AS 'First byte', average(firstPaint) as 'First paint', average(firstContentfulPaint) as 'First contentful paint', average(timeToDomContentLoadedEventEnd) AS 'DOM content loaded', average(timeToLoadEventEnd) AS 'Window load', average(duration) AS 'Window load + AJAX' FROM BrowserInteraction WHERE category = 'Initial page load' TIMESERIES"
+              }
+            ]
+          },
+          "title": "Page Load Breakdown (SPA Agent only)",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 34,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT percentile(duration, 50, 90, 95), average(duration) FROM PageView since 1 day ago TIMESERIES"
+              }
+            ]
+          },
+          "title": "Page Load Percentiles VS Average",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 37,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "limit": 1,
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT apdex(duration,t: 2) AS '' FROM PageView  SINCE 1 day ago"
+              }
+            ]
+          },
+          "title": "Front-End Apdex (Threshold 2 sec)",
+          "visualization": {
+            "id": "viz.bullet"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 37,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "limit": 1,
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT apdex(duration,t: 0.2) AS '' FROM Transaction   SINCE 1 day ago"
+              }
+            ]
+          },
+          "title": "Back-End Apdex (Threshold 0.2 sec) (APM Agent)",
+          "visualization": {
+            "id": "viz.bullet"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 37,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(loadAverageOneMinute), average(loadAverageFiveMinute), average(loadAverageFifteenMinute) FROM SystemSample since 1 day ago TIMESERIES"
+              }
+            ]
+          },
+          "title": "Back-end System Load (Infrastructure Agent)",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 40,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT apdex(duration,t: 2) AS '' FROM PageView  SINCE 1 day ago TIMESERIES"
+              }
+            ]
+          },
+          "title": "Front-End Apdex (Threshold 2 sec)",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 40,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT apdex(duration,t: 0.5) AS '' FROM Transaction   SINCE 1 day ago TIMESERIES"
+              }
+            ]
+          },
+          "title": "Back-End Apdex (Threshold 0.5 sec) (APM Agent)",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 40,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT average(cpuPercent) FROM SystemSample TIMESERIES FACET `entityName` since 1 day ago"
+              }
+            ]
+          },
+          "title": "Back-End CPU usage (Infrastructure Agent)",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 43,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM JavaScriptError facet errorMessage since 1 day ago"
+              }
+            ]
+          },
+          "title": "JS Errors Messages",
+          "visualization": {
+            "id": "viz.pie"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 43,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM JavaScriptError FACET errorClass SINCE 1 day ago"
+              }
+            ]
+          },
+          "title": "JS Errors Classes",
+          "visualization": {
+            "id": "viz.bar"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 43,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM JavaScriptError SINCE 1 day ago TIMESERIES"
+              }
+            ]
+          },
+          "title": "JS Errors Count",
+          "visualization": {
+            "id": "viz.line"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 46,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM JavaScriptError FACET userAgentName SINCE 1 day ago"
+              }
+            ]
+          },
+          "title": "JS Errors by Browser",
+          "visualization": {
+            "id": "viz.pie"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 46,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM JavaScriptError FACET requestUri SINCE 1 day ago"
+              }
+            ]
+          },
+          "title": "JS Errors by URI",
+          "visualization": {
+            "id": "viz.table"
+          }
+        },
+        {
+          "layout": {
+            "column": 9,
+            "height": 3,
+            "row": 46,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM JavaScriptError SINCE 1 hour ago FACET transactionName"
+              }
+            ]
+          },
+          "title": "JS Errors Related Transactions (APM)",
+          "visualization": {
+            "id": "viz.table"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
+            "height": 3,
+            "row": 49,
+            "width": 4
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM JavaScriptError FACET userAgentVersion SINCE 1 day ago"
+              }
+            ]
+          },
+          "title": "JS Errors by Browser version",
+          "visualization": {
+            "id": "viz.pie"
+          }
+        },
+        {
+          "layout": {
+            "column": 5,
+            "height": 3,
+            "row": 49,
+            "width": 8
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) FROM JavaScriptError FACET stackTrace SINCE 1 day ago"
+              }
+            ]
+          },
+          "title": "JS Errors Stack Trace Context",
+          "visualization": {
+            "id": "viz.table"
+          }
+        }
+      ]
+    }
+  ],
+  "permissions": "PUBLIC_READ_WRITE"
+}
