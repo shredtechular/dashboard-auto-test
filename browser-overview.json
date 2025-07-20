@@ -1,36 +1,23 @@
 {
-  "name": "Browser Overview",
+  "name": "Browser Overview - GH",
+  "description": "",
+  "permissions": "PUBLIC_READ_WRITE",
   "pages": [
     {
       "name": "Browser Overview",
+      "description": null,
       "widgets": [
         {
+          "title": "Traffic by Page Group",
           "layout": {
             "column": 1,
-            "height": 1,
-            "row": 1,
-            "width": 12
+            "row": 2,
+            "width": 4,
+            "height": 3
           },
-          "rawConfiguration": {
-            "ghBaseURL": "",
-            "ghOwner": "shredtechular",
-            "ghPath": "browser-overview.json",
-            "ghRepo": "dashboard-auto-test",
-            "ghToken": "Z2hwXzJ4ZEZsOGppS2h0U3JaVDV0RXBrdUcxeDFPQnh0YzFvdE1Xbw==",
-            "nrDashId": "MzM2MTk2NnxWSVp8REFTSEJPQVJEfGRhOjc0NDExMg",
-            "pollingMs": "4000"
-          },
-          "title": "GitHub Version Control for Dashboards",
+          "linkedEntityGuids": null,
           "visualization": {
-            "id": "64f5a379-c720-456e-a6bb-cf3885a7ba77.nr1-dashboard-gh-version-control"
-          }
-        },
-        {
-          "layout": {
-            "column": 1,
-            "height": 4,
-            "row": 3,
-            "width": 5
+            "id": "viz.bar"
           },
           "rawConfiguration": {
             "nrqlQueries": [
@@ -39,18 +26,19 @@
                 "query": "SELECT count(*) FROM PageView FACET browserTransactionName SINCE 1 week ago LIMIT 25"
               }
             ]
-          },
-          "title": "Traffic by Page Group",
-          "visualization": {
-            "id": "viz.bar"
           }
         },
         {
+          "title": "Stats Breakout",
           "layout": {
             "column": 6,
-            "height": 4,
-            "row": 3,
-            "width": 2
+            "row": 2,
+            "width": 2,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
           },
           "rawConfiguration": {
             "dataFormatters": [],
@@ -64,18 +52,19 @@
               }
             ],
             "thresholds": []
-          },
-          "title": "Stats Breakout",
-          "visualization": {
-            "id": "viz.billboard"
           }
         },
         {
+          "title": "Load Time Distribution",
           "layout": {
             "column": 8,
-            "height": 4,
-            "row": 3,
-            "width": 5
+            "row": 2,
+            "width": 5,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.heatmap"
           },
           "rawConfiguration": {
             "nrqlQueries": [
@@ -84,18 +73,19 @@
                 "query": "SELECT histogram(duration, 7, 100) FROM PageView FACET browserTransactionName SINCE 1 week ago"
               }
             ]
-          },
-          "title": "Load Time Distribution",
-          "visualization": {
-            "id": "viz.heatmap"
           }
         },
         {
+          "title": "Traffic Volume over Time",
           "layout": {
             "column": 1,
-            "height": 3,
-            "row": 7,
-            "width": 9
+            "row": 6,
+            "width": 9,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
           },
           "rawConfiguration": {
             "nrqlQueries": [
@@ -104,18 +94,19 @@
                 "query": "SELECT count(*) FROM PageView TIMESERIES 1 hour SINCE 1 week ago COMPARE WITH 1 week ago"
               }
             ]
-          },
-          "title": "Traffic Volume over Time",
-          "visualization": {
-            "id": "viz.line"
           }
         },
         {
+          "title": "Active Sessions",
           "layout": {
             "column": 10,
-            "height": 3,
-            "row": 7,
-            "width": 3
+            "row": 6,
+            "width": 3,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
           },
           "rawConfiguration": {
             "nrqlQueries": [
@@ -124,18 +115,19 @@
                 "query": "SELECT uniqueCount(session) FROM PageView since 60 minute ago until 10 seconds ago COMPARE WITH 1 hour ago"
               }
             ]
-          },
-          "title": "Active Sessions",
-          "visualization": {
-            "id": "viz.billboard"
           }
         },
         {
+          "title": "Site-wide Statistics",
           "layout": {
             "column": 1,
-            "height": 3,
-            "row": 10,
-            "width": 7
+            "row": 9,
+            "width": 7,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
           },
           "rawConfiguration": {
             "nrqlQueries": [
@@ -144,18 +136,19 @@
                 "query": "SELECT average(duration) AS 'Average Page Load Time', median(duration) AS 'Median Page Load Time', percentile(duration, 95) AS '95th % Page Load Time' FROM BrowserInteraction TIMESERIES SINCE 86400 seconds ago EXTRAPOLATE"
               }
             ]
-          },
-          "title": "Site-wide Statistics",
-          "visualization": {
-            "id": "viz.line"
           }
         },
         {
+          "title": "Median Load Time",
           "layout": {
             "column": 8,
-            "height": 3,
-            "row": 10,
-            "width": 5
+            "row": 9,
+            "width": 5,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
           },
           "rawConfiguration": {
             "nrqlQueries": [
@@ -164,18 +157,19 @@
                 "query": "SELECT percentile(duration,50),percentile(largestContentfulPaint,50) From PageView,PageViewTiming SINCE 3 days ago TIMESERIES 1 hour"
               }
             ]
-          },
-          "title": "Median Load Time",
-          "visualization": {
-            "id": "viz.line"
           }
         },
         {
+          "title": "Homepage Synthetic Check",
           "layout": {
             "column": 1,
-            "height": 3,
-            "row": 13,
-            "width": 6
+            "row": 12,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
           },
           "rawConfiguration": {
             "nrqlQueries": [
@@ -184,18 +178,19 @@
                 "query": "SELECT latest(duration)/1000 as 'Load Time' FROM SyntheticCheck FACET locationLabel SINCE 1 day ago TIMESERIES "
               }
             ]
-          },
-          "title": "Homepage Synthetic Check",
-          "visualization": {
-            "id": "viz.line"
           }
         },
         {
+          "title": "Synthetic Success Rates",
           "layout": {
             "column": 7,
-            "height": 3,
-            "row": 13,
-            "width": 6
+            "row": 12,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
           },
           "rawConfiguration": {
             "nrqlQueries": [
@@ -204,18 +199,19 @@
                 "query": "SELECT percentage(count(*),WHERE result = 'SUCCESS') FROM SyntheticCheck FACET monitorName SINCE 1 week ago"
               }
             ]
-          },
-          "title": "Synthetic Success Rates",
-          "visualization": {
-            "id": "viz.table"
           }
         },
         {
+          "title": "Traffic by Device Type",
           "layout": {
             "column": 1,
-            "height": 3,
-            "row": 16,
-            "width": 4
+            "row": 15,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.pie"
           },
           "rawConfiguration": {
             "nrqlQueries": [
@@ -224,18 +220,19 @@
                 "query": "SELECT count(*) FROM PageView FACET deviceType SINCE 1 week ago"
               }
             ]
-          },
-          "title": "Traffic by Device Type",
-          "visualization": {
-            "id": "viz.pie"
           }
         },
         {
+          "title": "Traffic by Origin",
           "layout": {
             "column": 5,
-            "height": 3,
-            "row": 16,
-            "width": 4
+            "row": 15,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.pie"
           },
           "rawConfiguration": {
             "nrqlQueries": [
@@ -244,18 +241,19 @@
                 "query": "SELECT count(*) FROM PageView FACET countryCode SINCE 1 week ago"
               }
             ]
-          },
-          "title": "Traffic by Origin",
-          "visualization": {
-            "id": "viz.pie"
           }
         },
         {
+          "title": "Browser Breakdown",
           "layout": {
             "column": 9,
-            "height": 3,
-            "row": 16,
-            "width": 4
+            "row": 15,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.pie"
           },
           "rawConfiguration": {
             "nrqlQueries": [
@@ -264,18 +262,19 @@
                 "query": "SELECT count(*) FROM PageView FACET userAgentName SINCE 1 week ago LIMIT 5"
               }
             ]
-          },
-          "title": "Browser Breakdown",
-          "visualization": {
-            "id": "viz.pie"
           }
         },
         {
+          "title": "Load Time by Device Type",
           "layout": {
             "column": 1,
-            "height": 3,
-            "row": 19,
-            "width": 4
+            "row": 18,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
           },
           "rawConfiguration": {
             "nrqlQueries": [
@@ -284,18 +283,19 @@
                 "query": "SELECT percentile(duration,50) from PageView FACET deviceType SINCE 1 day ago TIMESERIES"
               }
             ]
-          },
-          "title": "Load Time by Device Type",
-          "visualization": {
-            "id": "viz.line"
           }
         },
         {
+          "title": "Load Time by Country",
           "layout": {
             "column": 5,
-            "height": 3,
-            "row": 19,
-            "width": 4
+            "row": 18,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
           },
           "rawConfiguration": {
             "nrqlQueries": [
@@ -304,18 +304,19 @@
                 "query": "SELECT percentile(duration,50) from PageView facet countryCode TIMESERIES SINCE 1 day ago LIMIT 10"
               }
             ]
-          },
-          "title": "Load Time by Country",
-          "visualization": {
-            "id": "viz.line"
           }
         },
         {
+          "title": "Load Time by Browser",
           "layout": {
             "column": 9,
-            "height": 3,
-            "row": 19,
-            "width": 4
+            "row": 18,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.area"
           },
           "rawConfiguration": {
             "nrqlQueries": [
@@ -324,18 +325,19 @@
                 "query": "SELECT percentile(duration,50) from PageView facet userAgentName TIMESERIES SINCE 1 day ago LIMIT 10"
               }
             ]
-          },
-          "title": "Load Time by Browser",
-          "visualization": {
-            "id": "viz.area"
           }
         },
         {
+          "title": "Response Time by Browser Transaction",
           "layout": {
             "column": 1,
-            "height": 4,
-            "row": 22,
-            "width": 12
+            "row": 21,
+            "width": 12,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.area"
           },
           "rawConfiguration": {
             "nrqlQueries": [
@@ -344,18 +346,19 @@
                 "query": "SELECT median(duration) from PageView FACET browserTransactionName since 24 hours ago TIMESERIES"
               }
             ]
-          },
-          "title": "Response Time by Browser Transaction",
-          "visualization": {
-            "id": "viz.area"
           }
         },
         {
+          "title": "Performance by Page Group",
           "layout": {
             "column": 1,
-            "height": 5,
-            "row": 26,
-            "width": 8
+            "row": 25,
+            "width": 8,
+            "height": 5
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
           },
           "rawConfiguration": {
             "nrqlQueries": [
@@ -364,18 +367,19 @@
                 "query": "SELECT count(*) as '# Pages',average(duration) as 'AVG',percentile(duration,50,75) as '%',average(domProcessingDuration) as 'DOM Proc',average(pageRenderingDuration) as 'Pg Render' FROM PageView  facet browserTransactionName SINCE 1 day ago LIMIT 50"
               }
             ]
-          },
-          "title": "Performance by Page Group",
-          "visualization": {
-            "id": "viz.table"
           }
         },
         {
+          "title": "Most Active Cities",
           "layout": {
             "column": 9,
-            "height": 5,
-            "row": 26,
-            "width": 4
+            "row": 25,
+            "width": 4,
+            "height": 5
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.pie"
           },
           "rawConfiguration": {
             "nrqlQueries": [
@@ -384,18 +388,19 @@
                 "query": "SELECT uniqueCount(session) FROM PageView since 1 hour ago FACET city LIMIT 20"
               }
             ]
-          },
-          "title": "Most Active Cities",
-          "visualization": {
-            "id": "viz.pie"
           }
         },
         {
+          "title": "Browser Version Breakdown",
           "layout": {
             "column": 1,
-            "height": 4,
-            "row": 31,
-            "width": 8
+            "row": 30,
+            "width": 8,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
           },
           "rawConfiguration": {
             "nrqlQueries": [
@@ -404,18 +409,19 @@
                 "query": "SELECT count(*) as '# Pages',average(duration) as 'AVG',percentile(duration,50,75) as '%',average(domProcessingDuration) as 'DOM Proc',average(pageRenderingDuration) as 'Pg Render' FROM PageView facet userAgentName,userAgentVersion SINCE 1 day ago"
               }
             ]
-          },
-          "title": "Browser Version Breakdown",
-          "visualization": {
-            "id": "viz.table"
           }
         },
         {
+          "title": "Response Time by Browser Version",
           "layout": {
             "column": 9,
-            "height": 4,
-            "row": 31,
-            "width": 4
+            "row": 30,
+            "width": 4,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.area"
           },
           "rawConfiguration": {
             "nrqlQueries": [
@@ -424,18 +430,19 @@
                 "query": "SELECT average(duration) from PageView facet userAgentName,userAgentVersion since 24 hours ago TIMESERIES"
               }
             ]
-          },
-          "title": "Response Time by Browser Version",
-          "visualization": {
-            "id": "viz.area"
           }
         },
         {
+          "title": "Performance by Specific Page URL",
           "layout": {
             "column": 1,
-            "height": 5,
-            "row": 35,
-            "width": 9
+            "row": 34,
+            "width": 9,
+            "height": 5
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
           },
           "rawConfiguration": {
             "nrqlQueries": [
@@ -444,18 +451,19 @@
                 "query": "SELECT count(*) as '# Pages',average(duration) as 'AVG',percentile(duration,50,75) as '%',average(duration - backendDuration) as 'Front',average(backendDuration) as 'Back',average(domProcessingDuration) as 'DOM Processing',average(pageRenderingDuration) as 'Page Rendering' FROM PageView  facet pageUrl SINCE 1 day ago LIMIT 30"
               }
             ]
-          },
-          "title": "Performance by Specific Page URL",
-          "visualization": {
-            "id": "viz.table"
           }
         },
         {
+          "title": "Session Focus",
           "layout": {
             "column": 10,
-            "height": 5,
-            "row": 35,
-            "width": 3
+            "row": 34,
+            "width": 3,
+            "height": 5
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
           },
           "rawConfiguration": {
             "nrqlQueries": [
@@ -464,18 +472,19 @@
                 "query": "SELECT count(*), average(duration) FROM PageView FACET session LIMIT 100"
               }
             ]
-          },
-          "title": "Session Focus",
-          "visualization": {
-            "id": "viz.table"
           }
         },
         {
+          "title": "Page View Timeline",
           "layout": {
             "column": 1,
-            "height": 6,
-            "row": 40,
-            "width": 12
+            "row": 39,
+            "width": 12,
+            "height": 6
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
           },
           "rawConfiguration": {
             "nrqlQueries": [
@@ -484,18 +493,19 @@
                 "query": "SELECT pageUrl,duration,(duration - backendDuration) as 'Front',backendDuration as 'Backend',domProcessingDuration,pageRenderingDuration as 'Page Rendering' FROM PageView SINCE 1 day ago LIMIT 300 ORDER BY timestamp"
               }
             ]
-          },
-          "title": "Page View Timeline",
-          "visualization": {
-            "id": "viz.table"
           }
         },
         {
+          "title": "Top ISPs",
           "layout": {
             "column": 1,
-            "height": 3,
-            "row": 46,
-            "width": 4
+            "row": 45,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.pie"
           },
           "rawConfiguration": {
             "nrqlQueries": [
@@ -504,18 +514,19 @@
                 "query": "SELECT count(*) FROM PageView FACET asnOrganization LIMIT 25 SINCE 1 day ago "
               }
             ]
-          },
-          "title": "Top ISPs",
-          "visualization": {
-            "id": "viz.pie"
           }
         },
         {
+          "title": "Backend response time",
           "layout": {
             "column": 5,
-            "height": 3,
-            "row": 46,
-            "width": 8
+            "row": 45,
+            "width": 8,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
           },
           "rawConfiguration": {
             "nrqlQueries": [
@@ -524,14 +535,10 @@
                 "query": "SELECT average(((totalTime OR duration OR 0) + (queueDuration OR 0) OR 0) * 1000) AS 'Response time', average((queueDuration OR 0) * 1000) AS 'Request queuing', average((externalDuration OR 0) * 1000) AS 'Externals', average((gcCumulative OR 0) * 1000) AS 'GC', average((((totalTime OR duration OR 0) - (externalDuration OR 0) - (databaseDuration OR 0) - (gcCumulative OR 0)) OR 0) * 1000) AS 'Application time' FROM Transaction TIMESERIES SINCE 86400 seconds ago EXTRAPOLATE"
               }
             ]
-          },
-          "title": "Backend response time",
-          "visualization": {
-            "id": "viz.line"
           }
         }
       ]
     }
   ],
-  "permissions": "PUBLIC_READ_WRITE"
+  "variables": []
 }
