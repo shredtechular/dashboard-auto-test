@@ -566,5 +566,36 @@
       ]
     }
   ],
-  "variables": []
+  "variables": [
+    {
+      "name": "new_var",
+      "items": [
+        {
+          "title": null,
+          "value": "1"
+        },
+        {
+          "title": null,
+          "value": "2"
+        },
+        {
+          "title": null,
+          "value": "3"
+        },
+        {
+          "title": null,
+          "value": "4"
+        }
+      ],
+      "defaultValues": [],
+      "nrqlQuery": null,
+      "options": {
+        "excluded": false
+      },
+      "title": "Numbers",
+      "type": "ENUM",
+      "isMultiSelection": false,
+      "replacementStrategy": "STRING"
+    }
+  ]
 }
