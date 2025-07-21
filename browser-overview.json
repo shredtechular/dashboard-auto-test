@@ -1,15 +1,13 @@
 {
-  "name": "Browser Overview - GH Chrome Ext",
+  "name": "Browser Overview - GH Chrome Exts",
   "description": "",
   "permissions": "PUBLIC_READ_WRITE",
   "pages": [
     {
-      "guid": "MzM2MTk2NnxWSVp8REFTSEJPQVJEfDMyNzk2Njk",
       "name": "Browser Overview",
       "description": null,
       "widgets": [
         {
-          "id": "66117801",
           "title": "Traffic by Page Group",
           "layout": {
             "column": 1,
@@ -31,7 +29,6 @@
           }
         },
         {
-          "id": "66117804",
           "title": "Stats Breakout",
           "layout": {
             "column": 6,
@@ -58,7 +55,6 @@
           }
         },
         {
-          "id": "66117807",
           "title": "Load Time Distribution",
           "layout": {
             "column": 8,
@@ -80,7 +76,6 @@
           }
         },
         {
-          "id": "66117811",
           "title": "Traffic Volume over Time",
           "layout": {
             "column": 1,
@@ -102,7 +97,6 @@
           }
         },
         {
-          "id": "66117813",
           "title": "Active Sessions",
           "layout": {
             "column": 10,
@@ -124,7 +118,6 @@
           }
         },
         {
-          "id": "66117815",
           "title": "Site-wide Statistics",
           "layout": {
             "column": 1,
@@ -146,7 +139,6 @@
           }
         },
         {
-          "id": "66117816",
           "title": "Median Load Time",
           "layout": {
             "column": 8,
@@ -168,7 +160,6 @@
           }
         },
         {
-          "id": "66117818",
           "title": "Homepage Synthetic Check",
           "layout": {
             "column": 1,
@@ -190,7 +181,6 @@
           }
         },
         {
-          "id": "66117819",
           "title": "Synthetic Success Rates",
           "layout": {
             "column": 7,
@@ -212,7 +202,6 @@
           }
         },
         {
-          "id": "66117820",
           "title": "Traffic by Device Type",
           "layout": {
             "column": 1,
@@ -234,7 +223,6 @@
           }
         },
         {
-          "id": "66117821",
           "title": "Traffic by Origin",
           "layout": {
             "column": 5,
@@ -256,7 +244,6 @@
           }
         },
         {
-          "id": "66117822",
           "title": "Browser Breakdown",
           "layout": {
             "column": 9,
@@ -278,7 +265,6 @@
           }
         },
         {
-          "id": "66117823",
           "title": "Load Time by Device Type",
           "layout": {
             "column": 1,
@@ -300,7 +286,6 @@
           }
         },
         {
-          "id": "66117824",
           "title": "Load Time by Country",
           "layout": {
             "column": 5,
@@ -322,7 +307,6 @@
           }
         },
         {
-          "id": "66117825",
           "title": "Load Time by Browser",
           "layout": {
             "column": 9,
@@ -344,7 +328,6 @@
           }
         },
         {
-          "id": "66117826",
           "title": "Response Time by Browser Transaction",
           "layout": {
             "column": 1,
@@ -366,7 +349,6 @@
           }
         },
         {
-          "id": "66117827",
           "title": "Performance by Page Group",
           "layout": {
             "column": 1,
@@ -388,7 +370,6 @@
           }
         },
         {
-          "id": "66117828",
           "title": "Most Active Cities",
           "layout": {
             "column": 9,
@@ -410,7 +391,6 @@
           }
         },
         {
-          "id": "66117829",
           "title": "Browser Version Breakdown",
           "layout": {
             "column": 1,
@@ -432,7 +412,6 @@
           }
         },
         {
-          "id": "66117830",
           "title": "Response Time by Browser Version",
           "layout": {
             "column": 9,
@@ -454,7 +433,6 @@
           }
         },
         {
-          "id": "66117831",
           "title": "Performance by Specific Page URL",
           "layout": {
             "column": 1,
@@ -476,7 +454,6 @@
           }
         },
         {
-          "id": "66117832",
           "title": "Session Focus",
           "layout": {
             "column": 10,
@@ -498,7 +475,6 @@
           }
         },
         {
-          "id": "66117833",
           "title": "Page View Timeline",
           "layout": {
             "column": 1,
@@ -520,7 +496,6 @@
           }
         },
         {
-          "id": "66117834",
           "title": "Top ISPs",
           "layout": {
             "column": 1,
@@ -542,7 +517,6 @@
           }
         },
         {
-          "id": "66117835",
           "title": "Backend response time",
           "layout": {
             "column": 5,
