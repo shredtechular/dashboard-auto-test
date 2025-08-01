@@ -22,7 +22,7 @@
                 "accountIds": [
                   3361966
                 ],
-                "query": "SELECT count(*) FROM PageView FACET browserTransactionName SINCE 1 week ago LIMIT 25"
+                "query": "SELECT count(*) FROM PageView FACET browserTransactionName SINCE 1 day ago LIMIT 25"
               }
             ],
             "platformOptions": {
