@@ -14,13 +14,6 @@
             "width": 5
           },
           "rawConfiguration": {
-            "billboardSettings": {
-              "link": {
-                "newTab": true,
-                "title": "Google",
-                "url": "https://www.google.com"
-              }
-            },
             "facet": {
               "showOtherSeries": false
             },
@@ -38,7 +31,7 @@
           },
           "title": "Traffic by Page Group",
           "visualization": {
-            "id": "viz.billboard"
+            "id": "viz.bar"
           }
         },
         {
