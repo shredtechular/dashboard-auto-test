@@ -14,6 +14,13 @@
             "width": 5
           },
           "rawConfiguration": {
+            "billboardSettings": {
+              "link": {
+                "newTab": true,
+                "title": "Google",
+                "url": "https://www.google.com"
+              }
+            },
             "facet": {
               "showOtherSeries": false
             },
@@ -31,7 +38,7 @@
           },
           "title": "Traffic by Page Group",
           "visualization": {
-            "id": "viz.bar"
+            "id": "viz.billboard"
           }
         },
         {
@@ -430,19 +437,19 @@
         {
           "layout": {
             "column": 1,
-            "height": 5,
+            "height": 4,
             "row": 33,
-            "width": 9
+            "width": 8
           },
           "rawConfiguration": {
             "nrqlQueries": [
               {
                 "accountId": 3361966,
-                "query": "SELECT count(*) as '# Pages',average(duration) as 'AVG',percentile(duration,50,75) as '%',average(duration - backendDuration) as 'Front',average(backendDuration) as 'Back',average(domProcessingDuration) as 'DOM Processing',average(pageRenderingDuration) as 'Page Rendering' FROM PageView  facet pageUrl SINCE 1 day ago LIMIT 30"
+                "query": "SELECT count(*) as '# Pages',average(duration) as 'AVG',percentile(duration,50,75) as '%',average(domProcessingDuration) as 'DOM Proc',average(pageRenderingDuration) as 'Pg Render' FROM PageView facet userAgentName,userAgentVersion SINCE 1 day ago"
               }
             ]
           },
-          "title": "Performance by Specific Page URL",
+          "title": "Browser Version Breakdown",
           "visualization": {
             "id": "viz.table"
           }
@@ -470,8 +477,28 @@
         {
           "layout": {
             "column": 1,
+            "height": 5,
+            "row": 37,
+            "width": 9
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": 3361966,
+                "query": "SELECT count(*) as '# Pages',average(duration) as 'AVG',percentile(duration,50,75) as '%',average(duration - backendDuration) as 'Front',average(backendDuration) as 'Back',average(domProcessingDuration) as 'DOM Processing',average(pageRenderingDuration) as 'Page Rendering' FROM PageView  facet pageUrl SINCE 1 day ago LIMIT 30"
+              }
+            ]
+          },
+          "title": "Performance by Specific Page URL",
+          "visualization": {
+            "id": "viz.table"
+          }
+        },
+        {
+          "layout": {
+            "column": 1,
             "height": 6,
-            "row": 38,
+            "row": 42,
             "width": 12
           },
           "rawConfiguration": {
@@ -491,7 +518,7 @@
           "layout": {
             "column": 1,
             "height": 3,
-            "row": 44,
+            "row": 48,
             "width": 4
           },
           "rawConfiguration": {
@@ -511,7 +538,7 @@
           "layout": {
             "column": 5,
             "height": 3,
-            "row": 44,
+            "row": 48,
             "width": 8
           },
           "rawConfiguration": {
