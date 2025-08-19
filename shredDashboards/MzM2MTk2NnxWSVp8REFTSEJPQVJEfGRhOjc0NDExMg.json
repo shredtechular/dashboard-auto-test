@@ -4,7 +4,7 @@
   "pages": [
     {
       "description": null,
-      "name": "Browser Overview",
+      "name": "Browser Overviews",
       "widgets": [
         {
           "layout": {
@@ -54,7 +54,7 @@
             ],
             "thresholds": []
           },
-          "title": "Stats Breakout",
+          "title": "Stats Breakouts",
           "visualization": {
             "id": "viz.billboard"
           }
@@ -82,7 +82,7 @@
               "ignoreTimeRange": false
             }
           },
-          "title": "Load Time Distribution",
+          "title": "Load Time Distributionssssssss",
           "visualization": {
             "id": "viz.heatmap"
           }
@@ -95,14 +95,42 @@
             "width": 9
           },
           "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "markers": {
+              "displayedTypes": {
+                "criticalViolations": true,
+                "deployments": true,
+                "relatedDeployments": true,
+                "warningViolations": true
+              }
+            },
             "nrqlQueries": [
               {
-                "accountId": 3361966,
+                "accountIds": [
+                  3361966
+                ],
                 "query": "SELECT count(*) FROM PageView TIMESERIES 1 hour SINCE 1 week ago COMPARE WITH 1 week ago"
               }
-            ]
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "thresholds": {
+              "isLabelVisible": true
+            },
+            "yAxisLeft": {
+              "zero": true
+            },
+            "yAxisRight": {
+              "zero": true
+            }
           },
-          "title": "Traffic Volume over Time",
+          "title": "Traffic Volume over Times",
           "visualization": {
             "id": "viz.line"
           }
@@ -122,7 +150,7 @@
               }
             ]
           },
-          "title": "Active Sessions",
+          "title": "Active Sessionss",
           "visualization": {
             "id": "viz.billboard"
           }
@@ -435,12 +463,20 @@
             "width": 8
           },
           "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
             "nrqlQueries": [
               {
-                "accountId": 3361966,
-                "query": "SELECT count(*) as '# Pages',average(duration) as 'AVG',percentile(duration,50,75) as '%',average(domProcessingDuration) as 'DOM Proc',average(pageRenderingDuration) as 'Pg Render' FROM PageView facet userAgentName,userAgentVersion SINCE 1 day ago"
+                "accountIds": [
+                  3361966
+                ],
+                "query": "FROM PageView\n  JOIN \n    (FROM lookup(browserVersionNames) SELECT agent_version, codename limit 1000) \n  ON userAgentVersion = agent_version \nSELECT count(*) as '# Pages',average(duration) as 'AVG',percentile(duration,50,75) as '%',average(domProcessingDuration) as 'DOM Proc',average(pageRenderingDuration) as 'Pg Render' \nFACET userAgentName, userAgentVersion, codename since 1 month ago limit max"
               }
-            ]
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
           },
           "title": "Browser Version Breakdown",
           "visualization": {
