@@ -47,7 +47,7 @@
               "ignoreTimeRange": false
             }
           },
-          "title": "Traffic by Page Group",
+          "title": "Traffic by Page Groups",
           "visualization": {
             "id": "viz.bar"
           }
