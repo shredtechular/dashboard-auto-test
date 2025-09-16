@@ -82,7 +82,7 @@
               "ignoreTimeRange": false
             }
           },
-          "title": "Load Time Distributionssssssss",
+          "title": "Load Time Distributions",
           "visualization": {
             "id": "viz.heatmap"
           }
