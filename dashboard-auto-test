@@ -50,7 +50,7 @@
           },
           "title": "Traffic by Page Group",
           "visualization": {
-            "id": "viz.bar"
+            "id": "viz.billboard"
           }
         },
         {
